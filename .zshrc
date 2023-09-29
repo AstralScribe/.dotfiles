@@ -85,8 +85,9 @@ alias ca="conda activate"
 alias cod="conda deactivate"
 alias s03="kitten ssh -t ori_system_3090 'cd /media/newhd/ ; zsh --login'"
 alias s04="kitten ssh -t ori_system_4090 'cd /media/newhd/ ; zsh --login'"
-alias sg="kitten ssh -t global_ori 'cd /media/newhd/ ; zsh --login'"
+alias sg="kitten ssh -t global_4090 'cd /media/newhd/ ; zsh --login'"
 alias sq="kitten ssh -t ori_system_quadro 'cd /media/ori_quadro/newhd1/ ; zsh --login'"
+alias gq="kitten ssh -t global_quadro 'cd /media/ori_quadro/newhd1/ ; zsh --login'"
 alias code.="code ."
 alias orphans="pacman -Qdtq"
 alias zshconfig="vim ~/.zshrc"
@@ -98,6 +99,9 @@ v() {
 }
 gcwm() {
     git add . && git commit -m $1 && git push
+}
+dck() {
+    docker commit $1 && docker kill $1 && docker system prune
 }
 # <<< Alias <<<
 
