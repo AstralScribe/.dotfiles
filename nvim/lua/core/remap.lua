@@ -1,16 +1,9 @@
 vim.g.mapleader = " "
-
 local km = vim.keymap
 
+-- --------------------------- Essential Mappings ---------------------------
 -- file navigation
 km.set("n", "<leader>pv", vim.cmd.Ex)
-
--- file quit
--- km.set("n", "<leader>q", ":q")
--- km.set("n", "<leader>w", ":w")
--- km.set("n", "<leader>wq", ":wq")
--- km.set("n", "<leader>qn", ":q!")
-
 
 -- general keymaps
 km.set("i", "qw", "<ESC>")
@@ -33,12 +26,13 @@ km.set("n", "<leader>tx", ":tabclose<CR>")
 km.set("n", "<leader>t[", ":tabp<CR>")
 km.set("n", "<leader>t]", ":tabn<CR>")
 
--- plugin keymaps
 
+-- --------------------------- PLUGIN Mappings ---------------------------
 -- vim-maximizer
 km.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
 -- nvim-tree
 km.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 
-
+-- zen-mode
+km.set("n", "<leader>z", ":ZenMode<CR>")

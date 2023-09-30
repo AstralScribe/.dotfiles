@@ -13,7 +13,7 @@ opt.autoindent = true
 opt.smartindent = true
 
 -- line wrapping
-opt.wrap = false
+opt.wrap = true
 
 -- swap and backup
 opt.swapfile = false

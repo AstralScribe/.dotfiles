@@ -12,26 +12,38 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    -- essential plugins
     "nvim-lua/plenary.nvim",
-	"rebelot/kanagawa.nvim", -- theme
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
-	{ 'rose-pine/neovim', name = 'rose-pine' },
-    -- tree-sitter
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	"windwp/nvim-autopairs",
 
-    "ThePrimeagen/vim-be-good",
+    -- navigation
     "christoomey/vim-tmux-navigator", -- split windows and navigation
     "szw/vim-maximizer", -- maximize split window
+    "nvim-tree/nvim-tree.lua", -- nvim tree
+
+    --themes
+	"rebelot/kanagawa.nvim",
+	{ 'rose-pine/neovim', name = 'rose-pine' },
+
+    -- tree-sitter
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+
+    -- better editing
+	"windwp/nvim-autopairs",
     "tpope/vim-surround",
     "vim-scripts/ReplaceWithRegister",
     "numToStr/Comment.nvim", -- easy commenting for code
-    "nvim-tree/nvim-tree.lua", -- nvim tree
-    "junegunn/goyo.vim", -- focused writing
-    "junegunn/limelight.vim",
+
+    -- better markdown editors
+    -- "junegunn/goyo.vim", -- focused writing
+    -- "junegunn/limelight.vim",
+    -- "folke/zen-mode.nvim",
+    "folke/twilight.nvim",
+
+    -- editor beautification 
     "nvim-tree/nvim-web-devicons", -- nvim tree icons
     "nvim-lualine/lualine.nvim", -- status line
     "lewis6991/gitsigns.nvim",
@@ -40,6 +52,7 @@ require("lazy").setup({
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+
     -- snippets
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
@@ -54,7 +67,6 @@ require("lazy").setup({
     "onsails/lspkind.nvim",
 
     -- data science
-
     {
         "dccsillag/magma-nvim",
         version = "*",
@@ -73,4 +85,8 @@ require("lazy").setup({
             },
         },
     },
+
+    -- extras 
+    "ThePrimeagen/vim-be-good",
+    "edluffy/hologram.nvim"
 })
