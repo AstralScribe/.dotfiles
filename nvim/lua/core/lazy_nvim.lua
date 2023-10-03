@@ -63,7 +63,7 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
-    {"glepnir/lspsaga.nvim", branch = "main"},
+    "nvimdev/lspsaga.nvim",
     "onsails/lspkind.nvim",
 
     -- data science
