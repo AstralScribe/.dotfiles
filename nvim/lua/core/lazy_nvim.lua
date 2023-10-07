@@ -38,7 +38,7 @@ require("lazy").setup({
     "numToStr/Comment.nvim", -- easy commenting for code
 
     -- better markdown editors
-    -- "junegunn/goyo.vim", -- focused writing
+    -- "junegunn/goyo.vim",
     -- "junegunn/limelight.vim",
     -- "folke/zen-mode.nvim",
     "folke/twilight.nvim",
@@ -46,7 +46,8 @@ require("lazy").setup({
     -- editor beautification 
     "nvim-tree/nvim-web-devicons", -- nvim tree icons
     "nvim-lualine/lualine.nvim", -- status line
-    "lewis6991/gitsigns.nvim",
+    "lewis6991/gitsigns.nvim", -- git change line
+    "luckasRanarison/clear-action.nvim",
 
     -- auto-completion
     "hrsh7th/nvim-cmp",

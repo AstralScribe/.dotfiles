@@ -36,3 +36,12 @@ km.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 
 -- zen-mode
 km.set("n", "<leader>z", ":ZenMode<CR>")
+
+-- lsp-saga
+km.set("n", "<leader>h", "<cmd>Lspsaga term_toggle<CR>")
+
+
+
+
+
+

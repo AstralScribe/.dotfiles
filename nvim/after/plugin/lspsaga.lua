@@ -3,4 +3,8 @@ if not saga_status then
   return
 end
 
-saga.setup({})
+saga.setup({
+    lightbulb = {
+        virtual_text = false
+    }
+})
