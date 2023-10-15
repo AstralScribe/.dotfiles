@@ -105,6 +105,9 @@ gcwm() {
 dck() {
     docker commit $1 && docker kill $1 && docker system prune
 }
+mc() {
+    mkdir $1 && cd $1
+}
 # <<< Alias <<<
 
 
