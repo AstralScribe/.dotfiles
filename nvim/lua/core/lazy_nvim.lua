@@ -66,6 +66,7 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lsp",
     "nvimdev/lspsaga.nvim",
     "onsails/lspkind.nvim",
+    "jose-elias-alvarez/typescript.nvim",
 
     -- data science
     {

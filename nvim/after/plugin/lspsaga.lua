@@ -4,7 +4,7 @@ if not saga_status then
 end
 
 saga.setup({
-    lightbulb = {
-        virtual_text = false
-    }
+  lightbulb = {
+    virtual_text = false
+  }
 })

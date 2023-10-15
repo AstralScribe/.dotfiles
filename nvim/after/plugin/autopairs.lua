@@ -1,13 +1,13 @@
 local status_ap, autopairs = pcall(require, "nvim-autopairs")
 if not status_ap then
-    return
+  return
 end
 
 autopairs.setup({
-    check_ts = true,
-    ts_config = {
-        lua = { "string" }
-    },
+  check_ts = true,
+  ts_config = {
+    lua = { "string" }
+  },
 })
 
 -- import nvim-autopairs completion functionality safely
