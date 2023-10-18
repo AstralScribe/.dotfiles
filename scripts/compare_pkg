@@ -1,0 +1,6 @@
+#!/bin/bash
+
+pacman -Q > ~/pkg.list && sort ~/pkg.list > ~/.local/temp/all_pkg.list 
+(paclist core && paclist extra && paclist multilib) > ~/.local/temp/base.txt
+sort ~/.local/temp/base.txt > ~/.local/temp/core.list && rm ~/.local/temp/base.txt
+comm ~/.local/temp/core.list ~/.local/temp/all_pkg.list -3
