@@ -46,11 +46,12 @@ require("lazy").setup({
   -- "folke/zen-mode.nvim",
   "folke/twilight.nvim",
 
-  -- editor beautification 
-  "nvim-tree/nvim-web-devicons", -- nvim tree icons
-  "nvim-lualine/lualine.nvim", -- status line
-  "lewis6991/gitsigns.nvim", -- git change line
-  "luckasRanarison/clear-action.nvim",
+    -- editor beautification 
+    "nvim-tree/nvim-web-devicons", -- nvim tree icons
+    "nvim-lualine/lualine.nvim", -- status line
+    "lewis6991/gitsigns.nvim", -- git change line
+    "tpope/vim-fugitive",
+    "luckasRanarison/clear-action.nvim",
 
   -- auto-completion
   "hrsh7th/nvim-cmp",

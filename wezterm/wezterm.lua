@@ -15,7 +15,7 @@ Config.font_rules = {
     intensity = 'Bold',
     italic = true,
     font = wezterm.font {
-      family = 'VictorMono',
+      family = 'VictorMono Nerd Font',
       weight = 'Bold',
       style = 'Italic',
     },
@@ -24,7 +24,7 @@ Config.font_rules = {
     italic = true,
     intensity = 'Half',
     font = wezterm.font {
-      family = 'VictorMono',
+      family = 'VictorMono Nerd Font',
       weight = 'DemiBold',
       style = 'Italic',
     },
@@ -33,7 +33,7 @@ Config.font_rules = {
     italic = true,
     intensity = 'Normal',
     font = wezterm.font {
-      family = 'VictorMono',
+      family = 'VictorMono Nerd Font',
       style = 'Italic',
     },
   },

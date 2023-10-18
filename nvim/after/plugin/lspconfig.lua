@@ -151,3 +151,6 @@ lspconfig.rust_analyzer.setup{
   }
 }
 
+-- configure bash server
+lspconfig.bashls.setup{}
+
