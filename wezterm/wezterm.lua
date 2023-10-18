@@ -1,0 +1,43 @@
+local setup, wezterm = pcall(require, "wezterm")
+if not setup then
+  return
+end
+
+if wezterm.config_builder then
+  Config = wezterm.config_builder()
+end
+
+Config.color_scheme = "Github Dark"
+
+Config.font = wezterm.font { family = 'JetBrainsMono Nerd Font Mono', weight = "Light" }
+Config.font_rules = {
+  {
+    intensity = 'Bold',
+    italic = true,
+    font = wezterm.font {
+      family = 'VictorMono',
+      weight = 'Bold',
+      style = 'Italic',
+    },
+  },
+  {
+    italic = true,
+    intensity = 'Half',
+    font = wezterm.font {
+      family = 'VictorMono',
+      weight = 'DemiBold',
+      style = 'Italic',
+    },
+  },
+  {
+    italic = true,
+    intensity = 'Normal',
+    font = wezterm.font {
+      family = 'VictorMono',
+      style = 'Italic',
+    },
+  },
+}
+
+
+return Config
