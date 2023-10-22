@@ -30,6 +30,7 @@ require("lazy").setup({
   --themes
   "rebelot/kanagawa.nvim",
   { 'rose-pine/neovim', name = 'rose-pine' },
+  "Rigellute/shades-of-purple.vim",
 
   -- tree-sitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
