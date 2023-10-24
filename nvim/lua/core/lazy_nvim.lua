@@ -15,6 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
+  --themes
+  "rebelot/kanagawa.nvim",
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  "Rigellute/shades-of-purple.vim",
+
   -- essential plugins
   "nvim-lua/plenary.nvim",
   {
@@ -26,11 +31,6 @@ require("lazy").setup({
   "christoomey/vim-tmux-navigator", -- split windows and navigation
   "szw/vim-maximizer", -- maximize split window
   "nvim-tree/nvim-tree.lua", -- nvim tree
-
-  --themes
-  "rebelot/kanagawa.nvim",
-  { 'rose-pine/neovim', name = 'rose-pine' },
-  "Rigellute/shades-of-purple.vim",
 
   -- tree-sitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -47,12 +47,12 @@ require("lazy").setup({
   -- "folke/zen-mode.nvim",
   "folke/twilight.nvim",
 
-    -- editor beautification 
-    "nvim-tree/nvim-web-devicons", -- nvim tree icons
-    "nvim-lualine/lualine.nvim", -- status line
-    "lewis6991/gitsigns.nvim", -- git change line
-    "tpope/vim-fugitive",
-    "luckasRanarison/clear-action.nvim",
+  -- editor beautification 
+  "nvim-tree/nvim-web-devicons", -- nvim tree icons
+  "nvim-lualine/lualine.nvim", -- status line
+  "lewis6991/gitsigns.nvim", -- git change line
+  "tpope/vim-fugitive",
+  "luckasRanarison/clear-action.nvim",
 
   -- auto-completion
   "hrsh7th/nvim-cmp",
