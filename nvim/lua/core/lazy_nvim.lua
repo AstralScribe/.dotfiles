@@ -40,6 +40,14 @@ require("lazy").setup({
   "tpope/vim-surround",
   "vim-scripts/ReplaceWithRegister",
   "numToStr/Comment.nvim", -- easy commenting for code
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  },
 
   -- better markdown editors
   -- "junegunn/goyo.vim",
@@ -76,7 +84,7 @@ require("lazy").setup({
   -- debugger setup
   "mfussenegger/nvim-dap",
   {
-    "rcarriga/nvim-dap-ui", 
+    "rcarriga/nvim-dap-ui",
     dependencies = {"mfussenegger/nvim-dap"},
   },
   {
@@ -84,6 +92,7 @@ require("lazy").setup({
     ft = "python",
     dependencies = {"mfussenegger/nvim-dap"},
   },
+  "theHamsta/nvim-dap-virtual-text",
 
   -- data science
   {
@@ -107,5 +116,6 @@ require("lazy").setup({
 
   -- extras 
   "ThePrimeagen/vim-be-good",
-  "edluffy/hologram.nvim"
+  "edluffy/hologram.nvim",
+  "numToStr/FTerm.nvim",
 })
