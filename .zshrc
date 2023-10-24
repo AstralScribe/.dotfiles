@@ -94,6 +94,7 @@ alias orphans="pacman -Qdtq"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias nvimconfig="cd ~/.config/nvim && vim ."
+alias :q="exit"
 alias nunc='git add . && git commit -m "Novel updated" && git push'
 v() {
     z $1 && code .
