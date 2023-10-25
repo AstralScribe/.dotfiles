@@ -36,7 +36,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- cursor settings
-opt.cursorline = true
+-- opt.cursorline = true
 
 -- keyword settings
 opt.iskeyword:append("-")
