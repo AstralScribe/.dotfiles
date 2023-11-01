@@ -5,6 +5,7 @@ end
 
 saga.setup({
   lightbulb = {
+    enable = false,
     virtual_text = false
   }
 })

@@ -66,6 +66,7 @@ lspconfig.ruff_lsp.setup {
 lspconfig.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  -- root_dir = ,
   settings = {
     pyright = {autoImportCompletion = true,},
     python = {
@@ -78,6 +79,8 @@ lspconfig.pyright.setup({
     }
   }
 })
+
+-- lspconfig.pylsp.setup{}
 
 
 
