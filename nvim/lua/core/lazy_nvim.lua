@@ -13,7 +13,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+local plugins = {
 
   --themes
   "rebelot/kanagawa.nvim",
@@ -99,23 +99,32 @@ require("lazy").setup({
     "dccsillag/magma-nvim",
     version = "*",
     build = ":UpdateRemotePlugins",
-    keys = {
-      { "<leader>mi", "<cmd>MagmaInit<CR>", desc = "This command initializes a runtime for the current buffer." },
-      { "<leader>mo", "<cmd>MagmaEvaluateOperator<CR>", desc = "Evaluate the text given by some operator." },
-      { "<leader>ml", "<cmd>MagmaEvaluateLine<CR>", desc = "Evaluate the current line." },
-      { "<leader>mv", "<cmd>MagmaEvaluateVisual<CR>", desc = "Evaluate the selected text." },
-      { "<leader>mc", "<cmd>MagmaEvaluateOperator<CR>", desc = "Reevaluate the currently selected cell." },
-      { "<leader>mr", "<cmd>MagmaRestart!<CR>", desc = "Shuts down and restarts the current kernel." },
-      {
-        "<leader>mx",
-        "<cmd>MagmaInterrupt<CR>",
-        desc = "Interrupts the currently running cell and does nothing if not cell is running.",
-      },
-    },
+    -- keys = {
+    --   { "<leader>mi", "<cmd>MagmaInit<CR>", desc = "This command initializes a runtime for the current buffer." },
+    --   { "<leader>mo", "<cmd>MagmaEvaluateOperator<CR>", desc = "Evaluate the text given by some operator." },
+    --   { "<leader>ml", "<cmd>MagmaEvaluateLine<CR>", desc = "Evaluate the current line." },
+    --   { "<leader>mv", "<cmd>MagmaEvaluateVisual<CR>", desc = "Evaluate the selected text." },
+    --   { "<leader>mc", "<cmd>MagmaEvaluateOperator<CR>", desc = "Reevaluate the currently selected cell." },
+    --   { "<leader>mr", "<cmd>MagmaRestart!<CR>", desc = "Shuts down and restarts the current kernel." },
+    --   {
+    --     "<leader>mx",
+    --     "<cmd>MagmaInterrupt<CR>",
+    --     desc = "Interrupts the currently running cell and does nothing if not cell is running.",
+    --   },
+    -- },
   },
 
   -- extras 
   "ThePrimeagen/vim-be-good",
   "edluffy/hologram.nvim",
   "numToStr/FTerm.nvim",
-})
+}
+
+local opts = {
+	-- defaults = {
+	-- 	lazy = true,
+	-- },
+}
+
+require("lazy").setup(plugins, opts)
+

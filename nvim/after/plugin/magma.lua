@@ -1,4 +1,4 @@
-local setup, magma = pcall(require, "magma")
+local setup, magma = pcall(require, "magma-nvim")
 if not setup then
   return
 end
@@ -19,5 +19,6 @@ magma.setup({
   },
 })
 
-vim.g.nvim_set_var("magma_image_provider", "kitty")
+vim.g.nvim_set_var("magma_image_provider", "none")
+
 
