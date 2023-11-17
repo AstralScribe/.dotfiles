@@ -9,7 +9,8 @@ end
 
 Config.color_scheme = "Github Dark"
 
-Config.font = wezterm.font { family = 'JetBrainsMono Nerd Font Mono', weight = "Light" }
+-- Config.font = wezterm.font { family = 'JetBrainsMono Nerd Font Mono', weight = "Light" }
+Config.font = wezterm.font { family = 'Fira Code', weight = "Light" }
 Config.font_rules = {
   {
     intensity = 'Bold',
