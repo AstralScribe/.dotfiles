@@ -26,6 +26,7 @@ local plugins = {
     'nvim-telescope/telescope.nvim', tag = '0.1.2',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  "tpope/vim-obsession",
 
   -- navigation
   "christoomey/vim-tmux-navigator", -- split windows and navigation
@@ -54,6 +55,7 @@ local plugins = {
   -- "junegunn/limelight.vim",
   -- "folke/zen-mode.nvim",
   "folke/twilight.nvim",
+  "Pocco81/true-zen.nvim",
 
   -- editor beautification 
   "nvim-tree/nvim-web-devicons", -- nvim tree icons
