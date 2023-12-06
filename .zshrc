@@ -109,6 +109,10 @@ dck() {
 mc() {
     mkdir $1 && cd $1
 }
+list_files() {
+    find $1 -type f | wc -l
+}
+
 
 # <<< Alias <<<
 

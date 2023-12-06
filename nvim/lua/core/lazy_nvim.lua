@@ -59,6 +59,7 @@ local plugins = {
 
   -- editor beautification 
   "nvim-tree/nvim-web-devicons", -- nvim tree icons
+  "DaikyXendo/nvim-material-icon",
   "nvim-lualine/lualine.nvim", -- status line
   "lewis6991/gitsigns.nvim", -- git change line
   "tpope/vim-fugitive",
