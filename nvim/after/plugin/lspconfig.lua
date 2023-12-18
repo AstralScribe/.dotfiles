@@ -143,6 +143,9 @@ lspconfig.lua_ls.setup({
   },
 })
 
+-- configure c/cpp/cuda lsp
+lspconfig.clangd.setup{}
+
 -- configure rust-analyzer
 lspconfig.rust_analyzer.setup{
   settings = {

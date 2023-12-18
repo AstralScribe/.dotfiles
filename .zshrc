@@ -97,6 +97,8 @@ alias nvimconfig="cd ~/.config/nvim && vim ."
 alias :q="exit"
 alias sl="ls"
 alias nunc='git pull && git add . && git commit -m "Novel updated" && git push'
+alias g20="g++ -std=c++20"
+alias c20="clang++ -std=c++20"
 v() {
     z $1 && code .
 }
@@ -120,5 +122,7 @@ list_files() {
 # >>> Extra Commands >>>
 
 USE_POWERLINE="true"
+# stty erase "^?"
+
 
 # <<< Extra Commands <<<
