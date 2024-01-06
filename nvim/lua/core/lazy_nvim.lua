@@ -56,6 +56,12 @@ local plugins = {
   -- "folke/zen-mode.nvim",
   "folke/twilight.nvim",
   "Pocco81/true-zen.nvim",
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
 
   -- editor beautification 
   "nvim-tree/nvim-web-devicons", -- nvim tree icons
