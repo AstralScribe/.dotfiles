@@ -52,17 +52,17 @@ Config.min_scroll_bar_height = '2cell'
 Config.colors = {
   scrollbar_thumb = 'white',
 }
--- Config.background = {
---   -- This is the deepest/back-most layer. It will be rendered first
---   {
---     source = {
---       File = '/home/mayank/Pictures/wallpapers/wp7196356-purple-4k-wallpapers.png',
---     },
---     hsb = dimmer,
---     repeat_x = "NoRepeat",
---     attachment = { Parallax = 0.1 },
---   },
--- }
+Config.background = {
+  -- This is the deepest/back-most layer. It will be rendered first
+  {
+    source = {
+      File = '/home/mayank/Pictures/wallpapers/wp7196356-purple-4k-wallpapers.png',
+    },
+    hsb = dimmer,
+    repeat_x = "NoRepeat",
+    attachment = { Parallax = 0.1 },
+  },
+}
 
 Config.window_decorations = "TITLE"
 
