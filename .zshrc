@@ -32,10 +32,7 @@ fi
 # >>> Various Exports >>>
 
 export ZSH="$HOME/.oh-my-zsh"
-export MODULAR_HOME="$HOME/.modular"
 export PATH="/home/mayank/Documents/scripts:$PATH"
-export PATH="/home/mayank/Documents/ori/scripts:$PATH"
-export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 # export PATH="$PATH:/home/mayank/Documents/personal_projects/github_repos/depot_tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 # export LANG=en_US.UTF-8
