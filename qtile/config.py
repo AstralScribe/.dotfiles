@@ -6,7 +6,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "wezterm"
+# terminal = "wezterm"
+terminal = "alacritty"
 
 
 @hook.subscribe.startup_once
@@ -145,7 +146,7 @@ screens = [
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
         # x11_drag_polling_rate = 60,
-        wallpaper="~/Pictures/wallpapers/Black-And-Gold-Marble-Minimalist-Wallpapers.png",
+        wallpaper="/home/mayank/Downloads/DALL·E 2024-01-19 11.41.28 - A 4K resolution wallpaper of a narrow alley in a cyberpunk city during a blackout. The scene is set at night with heavy rainfall, and the only light s.png",
         wallpaper_mode="fill"
 
     ),

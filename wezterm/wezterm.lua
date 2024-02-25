@@ -10,8 +10,8 @@ end
 Config.color_scheme = "Github Dark"
 -- Config.color_scheme = "Catppuccin Mocha"
 
--- Config.font = wezterm.font { family = 'JetBrainsMono Nerd Font Mono', weight = "Light" }
-Config.font = wezterm.font { family = 'FiraCode Nerd Font Mono', weight = "Light" }
+Config.font = wezterm.font { family = 'JetBrainsMono Nerd Font Mono', weight = "Light" }
+-- Config.font = wezterm.font { family = 'FiraCode Nerd Font Mono', weight = "Light" }
 Config.font_rules = {
   {
     intensity = 'Bold',
@@ -45,7 +45,7 @@ Config.hide_tab_bar_if_only_one_tab = true
 
 -- The art is a bit too bright and colorful to be useful as a backdrop
 -- for text, so we're going to dim it down to 10% of its normal brightness
-local dimmer = { brightness = 0.05 }
+local dimmer = { brightness = 0.1 }
 
 -- Config.enable_scroll_bar = true
 Config.min_scroll_bar_height = '2cell'
@@ -56,11 +56,11 @@ Config.background = {
   -- This is the deepest/back-most layer. It will be rendered first
   {
     source = {
-      File = '/home/mayank/Pictures/wallpapers/wp7196356-purple-4k-wallpapers.png',
+      File = '/home/mayank/Pictures/wallpapers/kafka.jpeg',
     },
     hsb = dimmer,
     repeat_x = "NoRepeat",
-    attachment = { Parallax = 0.1 },
+    -- attachment = { Parallax = 0.1 },
   },
 }
 
