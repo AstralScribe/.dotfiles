@@ -1,10 +1,10 @@
 shell = "/usr/bin/zsh"
 
 [window]
-opacity = 0.1
+opacity = 0.7
 blur = true
 
 [font]
-normal = {family = "JetBrainsMonoNerdFont", style = "Regular"}
+normal = {family = "FiraMonoNerdFontMono", style = "Regular"}
 italic = {family = "VictorMonoNerdFont", style = "Italic"}
-size = 13
+size = 14
