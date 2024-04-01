@@ -1,13 +1,12 @@
 local opt = vim.opt
 
-
 -- line-numbers
 opt.relativenumber = true
 opt.number = true
 
 -- tabbings and indentations
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
@@ -41,4 +40,3 @@ opt.splitbelow = true
 -- keyword settings
 opt.iskeyword:append("-")
 opt.iskeyword:append("_")
-

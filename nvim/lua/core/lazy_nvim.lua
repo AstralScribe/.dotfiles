@@ -27,6 +27,7 @@ local plugins = {
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   "tpope/vim-obsession",
+  "folke/trouble.nvim",
 
   -- navigation
   "christoomey/vim-tmux-navigator", -- split windows and navigation
@@ -89,6 +90,16 @@ local plugins = {
   "nvimdev/lspsaga.nvim",
   "onsails/lspkind.nvim",
   "jose-elias-alvarez/typescript.nvim",
+  {
+    "stevearc/conform.nvim",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
+  },
 
   -- debugger setup
   "mfussenegger/nvim-dap",
