@@ -124,6 +124,6 @@ list_files() {
 
 USE_POWERLINE="true"
 # stty erase "^?"
-
+LS_COLORS+=':ow=01;34'
 
 # <<< Extra Commands <<<
