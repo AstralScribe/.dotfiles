@@ -11,7 +11,7 @@ source $HOME/.manjaro-config
 ZSH_THEME="powerlevel10k/powerlevel10k"
 zstyle ':omz:update' mode auto
 COMPLETION_WAITING_DOTS="true"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 # <<< Oh-my-zsh config <<<
 
 
@@ -127,3 +127,4 @@ USE_POWERLINE="true"
 LS_COLORS+=':ow=01;34'
 
 # <<< Extra Commands <<<
+. "$HOME/.cargo/env"
