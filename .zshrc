@@ -128,4 +128,3 @@ USE_POWERLINE="true"
 LS_COLORS+=':ow=01;34'
 
 # <<< Extra Commands <<<
-. "$HOME/.cargo/env"
