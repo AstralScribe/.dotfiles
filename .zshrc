@@ -33,6 +33,7 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/home/mayank/Documents/scripts:$PATH"
+export TERM="xterm-256color"
 # export PATH="$PATH:/home/mayank/Documents/personal_projects/github_repos/depot_tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 # export LANG=en_US.UTF-8
