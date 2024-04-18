@@ -53,6 +53,7 @@ files=(
 
 
 echo "$license" > "LICENSE"
+cp $HOME/.gitignore .
 for dir in "${directories[@]}"; do
     mkdir -p "$dir"
     echo "Created directory: $dir"
@@ -61,4 +62,5 @@ for file in "${files[@]}"; do
     touch "$file"
     echo "Created file: $dir"
 done
+git init
 nvim .

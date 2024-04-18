@@ -98,8 +98,8 @@ alias sl="ls"
 alias nunc='git pull && git add . && git commit -m "Novel updated" && git push'
 alias g20="g++ -std=c++20"
 alias c20="clang++ -std=c++20"
-alias pc="python -m venv venv"
-alias pa="source venv/bin/activate"
+alias pc="python -m venv .venv"
+alias pa="source .venv/bin/activate"
 alias pd="deactivate"
 v() {
     z $1 && code .
