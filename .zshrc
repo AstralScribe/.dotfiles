@@ -101,6 +101,7 @@ alias c20="clang++ -std=c++20"
 alias pc="python -m venv .venv"
 alias pa="source .venv/bin/activate"
 alias pd="deactivate"
+alias infer_env="source $HOME/Documents/dev-hub/neural-lab/.venv/bin/activate"
 v() {
     z $1 && code .
 }
