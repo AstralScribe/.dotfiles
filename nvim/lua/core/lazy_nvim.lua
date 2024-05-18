@@ -29,6 +29,7 @@ local plugins = {
 	},
 	"tpope/vim-obsession",
 	"folke/trouble.nvim",
+	"ThePrimeagen/harpoon",
 	-- "jamestthompson3/nvim-remote-containers",
 
 	-- navigation

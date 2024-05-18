@@ -18,6 +18,10 @@ conform.setup({
 		graphql = { "prettier" },
 		lua = { "stylua" },
 		python = { "ruff" },
+		cpp = { "clang-format" },
+	},
+	formatters = {
+		["clang-format"] = { prepend_args = { "-style", "{BasedOnStyle: goole, NamespaceIndentation: All}" } },
 	},
 	format_on_save = {
 		lsp_fallback = true,

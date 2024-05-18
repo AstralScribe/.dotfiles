@@ -7,4 +7,4 @@ blur = true
 [font]
 normal = {family = "FiraMonoNerdFontMono", style = "Regular"}
 italic = {family = "VictorMonoNerdFont", style = "Italic"}
-size = 15
+size = 16
