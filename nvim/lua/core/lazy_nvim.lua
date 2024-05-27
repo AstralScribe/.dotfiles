@@ -45,21 +45,16 @@ local plugins = {
 	"tpope/vim-surround",
 	"vim-scripts/ReplaceWithRegister",
 	"numToStr/Comment.nvim", -- easy commenting for code
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- },
 
 	-- better markdown editors
-	-- "junegunn/goyo.vim",
-	-- "junegunn/limelight.vim",
-	-- "folke/zen-mode.nvim",
-	"folke/twilight.nvim",
-	"Pocco81/true-zen.nvim",
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

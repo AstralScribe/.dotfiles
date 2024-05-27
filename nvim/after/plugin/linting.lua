@@ -1,5 +1,5 @@
-local conform_status, lint = pcall(require, "lint")
-if not conform_status then
+local lint_status, lint = pcall(require, "lint")
+if not lint_status then
 	return
 end
 
@@ -12,6 +12,9 @@ lint.linters_by_ft = {
 	python = { "ruff" },
 	cpp = { "cpplint" },
 }
+
+local cpplint = lint.linters.cpplint
+cpplint.args = { "--filter", "-whitespace,-legal/copyright" }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

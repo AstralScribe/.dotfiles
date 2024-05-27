@@ -38,7 +38,7 @@ fi
 # >>> Various Exports >>>
 
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="/home/mayank/Documents/scripts:$PATH"
+export PATH="$PATH:/home/mayank/Documents/scripts"
 export TERM="xterm-256color"
 export CUDA_HOME="/opt/cuda"
 # export PATH="$PATH:/home/mayank/Documents/personal_projects/github_repos/depot_tools"
