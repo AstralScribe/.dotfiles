@@ -9,10 +9,11 @@ def install():
 
     for font in fonts:
         tar_name, tgt_path = font.split("|")
-        
+        tgt_path = tgt_path.replace("$HOME", parameters.HOME_DIR)
+
         if not os.path.exists(tgt_path):
             try:
-                helpers.run(['mkdir', '-p', tgt_path], check=True, output="null")
+                helpers.run(f"mkdir -p {tgt_path}", check=True, output="null", shell=True)
             except PermissionError:
                 print("creating the directory as root instead...")
                 helpers.run(['sudo', 'mkdir', '-p', tgt_path], check=True, output="null")
