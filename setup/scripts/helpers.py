@@ -65,15 +65,18 @@ def nvidia_detect(mode=None):
     if mode == "drivers":
         command = "cat /usr/lib/modules/*/pkgbase"
         out = run(command, check=False, shell=True, output="pipe", text=True)
-        krnl = out.stdout.splitlines()[0]
+        krnl = out.stdout.strip()
+        
+        pkgs = ["nvidia-utils"]
 
-        if krnl == "linux":
-            print("nvidia\nnvidia-utils")
-        elif krnl == "linux-lts":
-            print("nvidia-lts\nnvidia-utils")
-        else:
-            print("nvidia-dkms\nnvidia-utils")
-        return True
+        if krnl == "linux": 
+            pkgs.append("nvidia")
+        elif krnl == "linux-lts": 
+            pkgs.append("nvidia-lts")
+        else: 
+            pkgs.append("nvidia-dkms")
+
+        return pkgs
 
     if any("nvidia" in gpu.lower() for gpu in dGPU):
         return True

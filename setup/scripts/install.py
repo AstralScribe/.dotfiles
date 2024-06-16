@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 
 import helpers
-import install_pre
 import packages
 import install_pkg
 import install_fnt
 
-print("""
+print(r"""
 |---------------------------------------------------------------------|
        .             _             _       ____       _
       / \           / \   _ __ ___| |__   / ___|  ___| |_ _   _ _ __
@@ -57,7 +56,7 @@ flg_Service=1
 #--------------------#
 # pre-install script #
 #--------------------#
-print("""
+print(r"""
   ____                ___           _        _ _   ____       _
  |  _ \ _ __ ___     |_ _|_ __  ___| |_ __ _| | | / ___|  ___| |_ _   _ _ __
  | |_) | '__/ _ \_____| || '_ \/ __| __/ _` | | | \___ \ / _ \ __| | | | '_ \
@@ -67,16 +66,16 @@ print("""
 """)
 
 
-install_pre.boot()
-install_pre.pacman()
-install_pre.user_vars()
+# install_pre.boot()
+# install_pre.pacman()
+# install_pre.user_vars()
 
 
 #--------------------------------#
 # intstalling necessary packages #
 #--------------------------------#
 if flg_Install:
-    print("""
+    print(r"""
  ___           _        _ _ _               ____  _
 |_ _|_ __  ___| |_ __ _| | (_)_ __   __ _  |  _ \| | ____ _ ___
  | || '_ \/ __| __/ _` | | | | '_ \ / _` | | |_) | |/ / _` / __|
@@ -93,7 +92,7 @@ if flg_Install:
     if helpers.nvidia_detect():
         command = "cat /usr/lib/modules/*/pkgbase"
         out = helpers.run(command, check=False, shell=True, output="pipe", text=True)
-        krnl = out.stdout.splitlines()[0]
+        krnl = out.stdout.strip()
         pkgs.append(f"{krnl}-headers")
         pkgs.extend(helpers.nvidia_detect("drivers"))
         helpers.nvidia_detect("verbose")
@@ -104,9 +103,9 @@ if flg_Install:
     # install packages from the list #
     #--------------------------------#
     pacman_pkgs, aur_pkgs = install_pkg.split_pkg(pkgs)
-    install_pkg.install_pacman(pacman_pkgs)
-    install_pkg.install_aur(aur_pkgs)
-    del pkgs, pacman_pkgs, aur_pkgs
+    # install_pkg.install_pacman(pacman_pkgs)
+    # install_pkg.install_aur(aur_pkgs)
+    # del pkgs, pacman_pkgs, aur_pkgs
         
     #--------------------------------#
     # installing fonts from the list #
@@ -118,7 +117,7 @@ if flg_Install:
 # Configuring setup #
 #-------------------#
 if flg_Configure:
-    print("""
+    print(r"""
   ____             __ _                  _                   _       _
  / ___|___  _ __  / _(_) __ _ _   _ _ __(_)_ __   __ _    __| | ___ | |_ ___
 | |   / _ \| '_ \| |_| |/ _` | | | | '__| | '_ \ / _` |  / _` |/ _ \| __/ __|

@@ -1,6 +1,6 @@
 import os
 
-SCR_DIR = "./"
+SCR_DIR = "."
 SRC_DIR = "../source"
 AUR = "paru"
 SHELL = "zsh"
