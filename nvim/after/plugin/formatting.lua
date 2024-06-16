@@ -21,7 +21,7 @@ conform.setup({
 		cpp = { "clang-format" },
 	},
 	formatters = {
-		["clang-format"] = { prepend_args = { "-style", "{BasedOnStyle: goole, NamespaceIndentation: All}" } },
+		["clang-format"] = { prepend_args = { "-style", "{BasedOnStyle: google, NamespaceIndentation: All}" } },
 	},
 	format_on_save = {
 		lsp_fallback = true,

@@ -38,7 +38,7 @@ fi
 # >>> Various Exports >>>
 
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:/home/mayank/Documents/scripts"
+# export PATH="$PATH:/home/mayank/Documents/scripts"
 export TERM="xterm-256color"
 export CUDA_HOME="/opt/cuda"
 # export PATH="$PATH:/home/mayank/Documents/personal_projects/github_repos/depot_tools"
@@ -114,6 +114,8 @@ alias external_pkgs="pacman -Qem"
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias nvimconfig="cd ~/.config/nvim && vim ."
+alias qtct_disable="mv $HOME/.config/qt5ct $HOME/.config/qt5ct.old && mv $HOME/.config/qt6ct $HOME/.config/qt6ct.old"
+alias qtct_enable="mv $HOME/.config/qt5ct.old $HOME/.config/qt5ct && mv $HOME/.config/qt6ct.old $HOME/.config/qt6ct"
 
 # System shortcuts
 alias :q="exit"
