@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+import argparse
 
 import helpers
-import packages
-import install_pkg
 import install_fnt
+import install_pkg
+import install_pre
+import packages
 
 print(r"""
 |---------------------------------------------------------------------|
@@ -22,36 +24,32 @@ print(r"""
 #------------------#
 # evaluate options #
 #------------------#
-flg_Install=0
-flg_Configure=0
-flg_Service=0
+parser = argparse.ArgumentParser(description='Process some flags.')
+parser.add_argument('-i', action='store_true', help='Install hyprland without configs')
+parser.add_argument('-r', action='store_true', help='Restore config files')
+parser.add_argument('-s', action='store_true', help='Enable system services')
 
+args = parser.parse_args()
 
-# while getopts idrs RunStep; do
-#     case $RunStep in
-#         i)  flg_Install=1 ;;
-#         d)  flg_Install=1 ; export use_default="--noconfirm" ;;
-#         r)  flg_Configure=1 ;;
-#         s)  flg_Service=1 ;;
-#         *)  echo "...valid options are..."
-#             echo "i : [i]nstall hyprland without configs"
-#             echo "d : install hyprland [d]efaults without configs --noconfirm"
-#             echo "r : [r]estore config files"
-#             echo "s : enable system [s]ervices"
-#             exit 1 ;;
-#     esac
-# done
-#
-# if [ $OPTIND -eq 1 ]; then
-#     flg_Install=1
-#     flg_Configure=1
-#     flg_Service=1
-# fi
+flg_Install = 0
+flg_Configure = 0
+flg_Service = 0
 
-flg_Install=1
-flg_Configure=1
-flg_Service=1
+if args.i:
+    flg_Install = 1
+if args.r:
+    flg_Configure = 1
+if args.s:
+    flg_Service = 1
 
+if not (args.i or args.r or args.s):
+    flg_Install = 1
+    flg_Configure = 1
+    flg_Service = 1
+
+print(f"Install flag: {flg_Install}")
+print(f"Configure flag: {flg_Configure}")
+print(f"Service flag: {flg_Service}")
 
 #--------------------#
 # pre-install script #
@@ -67,8 +65,8 @@ print(r"""
 
 
 # install_pre.boot()
-# install_pre.pacman()
-# install_pre.user_vars()
+install_pre.pacman()
+install_pre.user_vars()
 
 
 #--------------------------------#
@@ -103,9 +101,9 @@ if flg_Install:
     # install packages from the list #
     #--------------------------------#
     pacman_pkgs, aur_pkgs = install_pkg.split_pkg(pkgs)
-    # install_pkg.install_pacman(pacman_pkgs)
-    # install_pkg.install_aur(aur_pkgs)
-    # del pkgs, pacman_pkgs, aur_pkgs
+    install_pkg.install_pacman(pacman_pkgs)
+    install_pkg.install_aur(aur_pkgs)
+    del pkgs, pacman_pkgs, aur_pkgs
         
     #--------------------------------#
     # installing fonts from the list #
@@ -125,6 +123,7 @@ if flg_Configure:
  \____\___/|_| |_|_| |_|\__, |\__,_|_|  |_|_| |_|\__, |  \__,_|\___/ \__|___/
                         |___/                    |___/
 """)
+    
 
 #     "${scrDir}/restore_cfg.sh"
 #     echo -e "\n\033[0;32m[themepatcher]\033[0m Patching themes..."

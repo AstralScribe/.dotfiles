@@ -33,10 +33,12 @@ else:
         print("Git not installed.")
         sys.exit()
 
+        
 def _extract_repo(pkg):
     command = f"pacman -Si {pkg} | awk -F ': ' '/Repository / {{print $2}}'"
     out = helpers.run(command, text=True, output="pipe", shell=True)
     return out.stdout.strip()
+
 
 def split_pkg(pkgs: List):
     pacman_pkgs = []
@@ -56,3 +58,14 @@ def split_pkg(pkgs: List):
 
     return pacman_pkgs, aur_pkgs
 
+
+def install_pacman(pkgs: List):
+    pkgs_to_install = " ".join(pkgs)
+    commands = ["sudo", "pacman", "-S", pkgs_to_install]
+    helpers.run(commands, output="pipe")
+
+
+def install_aur(pkgs: List):
+    pkgs_to_install = " ".join(pkgs)
+    commands = [parameters.AUR, "-S", pkgs_to_install]
+    helpers.run(commands, output="pipe")
