@@ -1,0 +1,11 @@
+example:
+  symlink: true
+  overwrite: true
+  backup: true
+  path: .config/example
+
+nvim:
+  symlink: true
+  overwrite: false
+  backup: false
+  path: .config/nvim

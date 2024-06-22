@@ -1,0 +1,3 @@
+[submodule "setup/source/eww"]
+	path = setup/source/eww
+	url = https://github.com/elkowar/eww

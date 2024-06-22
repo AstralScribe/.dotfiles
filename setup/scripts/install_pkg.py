@@ -69,3 +69,7 @@ def install_aur(pkgs: List):
     pkgs_to_install = " ".join(pkgs)
     commands = [parameters.AUR, "-S", pkgs_to_install]
     helpers.run(commands, output="pipe")
+
+
+def install_eww():
+

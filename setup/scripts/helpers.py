@@ -67,7 +67,7 @@ def nvidia_detect(mode=None):
         out = run(command, check=False, shell=True, output="pipe", text=True)
         krnl = out.stdout.strip()
         
-        pkgs = ["nvidia-utils"]
+        pkgs = ["nvidia-utils", "nvidia-container-toolkit"]
 
         if krnl == "linux": 
             pkgs.append("nvidia")
