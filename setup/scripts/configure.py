@@ -1,19 +1,19 @@
-import datetime
 import os
+import shutil
 import yaml
 
-import parameters
+import helpers
 
 
-now = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-BACKUP_DIR = f"{parameters.CONF_DIR}/bkps/{now}"
+def configure():
+    with open("./config.yaml", "r") as f:
+        CONFIGS = yaml.safe_load(f)
 
-if not os.path.exists(BACKUP_DIR):
-    os.makedirs(BACKUP_DIR, exist_ok=True)
+    for name, config in CONFIGS.items():
+        pkg = helpers.AttrDict(config)
+        print(f"\033[0;34m[Symlink]\033[0m {pkg.is_symlink} \033[0;32m[Configuring]\033[0m {name} {pkg.dst_path} <-- {pkg.src_path}.")
+        if pkg.is_symlink:
+            os.symlink(src=pkg.src_path, dst=pkg.dst_path, target_is_directory=pkg.is_directory)
+        else:
+            shutil.copytree(src=pkg.src_path, dst=pkg.dst_path)
 
-with open("./lists/config.yaml", "r") as f:
-    CONFIGS = yaml.safe_load(f)
-
-
-for name, config in CONFIGS.items():
-    print(f"\033[0;32m[Configuring]\033[0m {name} <-- {config.get('path')}")

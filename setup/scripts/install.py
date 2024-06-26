@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 import argparse
+import sys
 
 import helpers
-import install_fnt
 import install_pkg
 import install_pre
 import packages
+import configure
 
 print(r"""
 |---------------------------------------------------------------------|
@@ -101,15 +102,31 @@ if flg_Install:
     # install packages from the list #
     #--------------------------------#
     pacman_pkgs, aur_pkgs = install_pkg.split_pkg(pkgs)
-    install_pkg.install_pacman(pacman_pkgs)
-    install_pkg.install_aur(aur_pkgs)
-    del pkgs, pacman_pkgs, aur_pkgs
-        
-    #--------------------------------#
-    # installing fonts from the list #
-    #--------------------------------#
-    install_fnt.install()
 
+    print("Pacman Packages: ", pacman_pkgs)
+    print("AUR Packages: ", aur_pkgs)
+
+    continue_setup = input("Do you wish to continue? [Y/n]")
+    
+    if continue_setup.lower() == "y":
+        install_pkg.install_aur_helper()
+        install_pkg.install_pacman(pacman_pkgs)
+        install_pkg.post_pacman_install_setup()
+        install_pkg.install_aur(aur_pkgs)
+        install_pkg.install_eww()
+        del pkgs, pacman_pkgs, aur_pkgs
+    else:
+        sys.exit()
+        
+    #---------------------------------------#
+    # installing custom fonts from the list #
+    #---------------------------------------#
+    # install_fnt.install()
+
+    #-----------------------------------------#
+    # installing shell plugings from the list #
+    #-----------------------------------------#
+    # plugins_sh.install()
 
 #-------------------#
 # Configuring setup #
@@ -123,9 +140,9 @@ if flg_Configure:
  \____\___/|_| |_|_| |_|\__, |\__,_|_|  |_|_| |_|\__, |  \__,_|\___/ \__|___/
                         |___/                    |___/
 """)
+    configure.configure()
     
 
-#     "${scrDir}/restore_cfg.sh"
 #     echo -e "\n\033[0;32m[themepatcher]\033[0m Patching themes..."
 #     while IFS='"' read -r null1 themeName null2 themeRepo
 #     do

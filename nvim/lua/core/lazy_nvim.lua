@@ -100,6 +100,8 @@ local plugins = {
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },
 	},
+	"elkowar/yuck.vim",
+	"gpanders/nvim-parinfer",
 
 	-- debugger setup
 	"mfussenegger/nvim-dap",

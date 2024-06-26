@@ -1,0 +1,45 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+alt+n",
+    "command": "welcome.showNewFileEntries"
+  },
+  {
+    "key": "ctrl+shift+q",
+    "command": "workbench.view.remote"
+  },
+  {
+    "key": "ctrl+shift+'",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "ctrl+numpad4",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+numpad6",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+numpad8",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+numpad2",
+    "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "accessibilityModeEnabled && terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "-workbench.action.terminal.runRecentCommand",
+    "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled"
+  }
+]

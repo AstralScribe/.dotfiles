@@ -1,0 +1,11 @@
+nvim:
+  src_path: ~/.dotfiles/configs/.config/nvim
+  dst_path: ~/.config/nvim
+  is_directory: true
+  is_symlink: true
+
+zshrc:
+  src_path: ~/.dotfiles/configs/.zshrc
+  dst_path: ~/.zshrc
+  is_directory: false
+  is_symlink: true

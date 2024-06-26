@@ -5,6 +5,14 @@ from typing import List, Optional
 
 import parameters
 
+
+class AttrDict(dict):
+    def __init__(self, *args, **kwargs):
+        super(AttrDict, self).__init__(*args, **kwargs)
+        temp = {k:os.path.expanduser(v) if isinstance(v,str) else v for k,v in self.items()}
+        self.__dict__ = temp
+
+
 if not os.path.exists(parameters.CLONE_DIR):
     os.makedirs(parameters.CLONE_DIR, exist_ok=True)
     with open(f"{parameters.CLONE_DIR}/.directory", "w") as file:

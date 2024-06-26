@@ -20,7 +20,6 @@ packages = [
     "sof-firmware",
     "ffmpeg",
     "docker",
-    "zsh",
 
 # --------------------------------------------------------- // Display Manager
     "sddm",                                                 # display manager for KDE plasma
@@ -34,11 +33,10 @@ packages = [
     "python-pywlroots",
     "dunst",                                                # notification daemon
     "rofi-wayland",                                         # application launcher
-    # "waybar",                                               # system bar
+    "waybar",                                               # system bar
     "swww",                                                 # wallpaper
     "swaylock-effects-git",                                 # lock screen
     "wlogout",                                              # logout menu
-    "grimblast-git",                                        # screenshot tool
     "hyprpicker",                                           # color picker
     "slurp",                                                # region select for screenshot/screenshare
     "swappy",                                               # screenshot editor
@@ -65,6 +63,7 @@ packages = [
     "kvantum-qt5",                                          # svg based qt5 theme engine
     "qt5-wayland",                                          # wayland support in qt5
     "qt6-wayland",                                          # wayland support in qt6
+    "bibata-cursor-theme",                                  # cursors list
 
 # --------------------------------------------------------- // Applications
     "firefox",                                              # browser
@@ -73,7 +72,6 @@ packages = [
     # "ark",                                                # kde file archiver
     "vim",                                                  # terminal text editor
     "neovim",                                               # terminal text editor
-    # "code",                                               # ide text editor
     "mpv",
     "openssh",
     "p7zip",
@@ -83,13 +81,14 @@ packages = [
     "opencv",
 
 # --------------------------------------------------------- // Shell
+    "zsh",                                                  # shell
     "fastfetch",                                            # system information fetch tool
     "tmux",                                                 # terminal multiplexer
     "zoxide",                                               # faster cd
     "tldr",                                                 # man with examples
-    "uv",
-    "rye",
-    "rustup",
+    "uv",                                                   # python-package manager
+    "rye",                                                  # python-project manager
+    "rustup",                                               # rust package manager
     "rsync",
     "meson",
     "htop",
@@ -101,7 +100,20 @@ packages = [
     
 
 # --------------------------------------------------------- // Fonts
-    "nerd-fonts",
+    "gnu-free-fonts",
+    "otf-firamono-nerd",
+    "noto-fonts",
+    "noto-fonts-extra",
+    "ttf-cascadia-code",
+    "ttf-cascadia-code-nerd",
+    "ttf-cascadia-mono-nerd",
+    "ttf-firacode-nerd",
+    "ttf-font-awesome",
+    "ttf-hanazone",
+    "ttf-jetbrains-mono",
+    "ttf-jetbrains-mono-nerd",
+    "ttf-mononoki-nerd",
+    "ttf-victor-mono-nerd",
     "unicode-emoji",
     "noto-fonts-cjk",
     "noto-fonts-emoji",
