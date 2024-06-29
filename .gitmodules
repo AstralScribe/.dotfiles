@@ -1,6 +1,15 @@
-[submodule "source/eww"]
-	path = source/eww
-	url = https://github.com/elkowar/eww
 [submodule "configs/.oh-my-zsh"]
 	path = configs/.oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "configs/.tmux/plugins/tmux-resurrect"]
+	path = configs/.tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "configs/.tmux/plugins/vim-tmux-navigator"]
+	path = configs/.tmux/plugins/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
+[submodule "configs/.tmux/plugins/tmux-sensible"]
+	path = configs/.tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "configs/.tmux/plugins/tpm"]
+	path = configs/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
