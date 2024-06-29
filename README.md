@@ -1,8 +1,7 @@
-# dotfiles
-My personal dot files collection
+# File Description
 
-# TODO
+---
 
-- [ ] Write the install.sh file
-- [ ] Add package list
-- [ ] Add aur install steps
+- scripts
+  - global_fn.sh: functions and variables used in the scripts
+  - install_pre.sh: grub, systemd, pacman, user_vars.sh

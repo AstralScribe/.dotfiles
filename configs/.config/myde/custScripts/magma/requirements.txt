@@ -1,0 +1,7 @@
+pynvim
+jupyter_client
+Pillow
+cairosvg
+pnglatex
+plotly
+pyperclip

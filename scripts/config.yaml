@@ -1,0 +1,41 @@
+manjaro_config:
+  src_path: ~/.dotfiles/configs/.manjaro-config
+  dst_path: ~/.manjaro-config
+  is_directory: false
+  is_symlink: true
+
+p10k:
+  src_path: ~/.dotfiles/configs/.p10k.zsh
+  dst_path: ~/.p10k.zsh
+  is_directory: false
+  is_symlink: true
+
+zshrc:
+  src_path: ~/.dotfiles/configs/.zshrc
+  dst_path: ~/.zshrc
+  is_directory: false
+  is_symlink: true
+
+tmux_conf:
+  src_path: ~/.dotfiles/configs/.tmux.conf
+  dst_path: ~/.tmux.conf
+  is_directory: false
+  is_symlink: true
+
+tmux_dir:
+  src_path: ~/.dotfiles/configs/.tmux
+  dst_path: ~/.tmux
+  is_directory: true
+  is_symlink: true
+
+nvim:
+  src_path: ~/.dotfiles/configs/.config/nvim
+  dst_path: ~/.config/nvim
+  is_directory: true
+  is_symlink: true
+
+sddm:
+  src_path: ~/.dotfiles/configs/sddm/Candy
+  dst_path: /usr/share/sddm/themes/Candy
+  is_directory: true
+  is_symlink: false
