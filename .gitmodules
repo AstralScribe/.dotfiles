@@ -20,11 +20,11 @@
 	path = source/eww
 	url = https://github.com/elkowar/eww
 [submodule "configs/omz-plugins/themes/powerlevel10k"]
-	path = configs/omz-plugins/powerlevel10k
+	path = configs/omz-plugins/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "configs/omz-plugins/plugins/zsh-autosuggestions"]
-	path = configs/omz-plugins/zsh-autosuggestions
+	path = configs/omz-plugins/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 [submodule "configs/omz-plugins/plugins/zsh-syntax-highlighting"]
-	path = configs/omz-plugins/zsh-syntax-highlighting
+	path = configs/omz-plugins/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
