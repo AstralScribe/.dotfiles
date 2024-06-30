@@ -101,6 +101,7 @@ if flg_Install:
     #--------------------------------#
     # install packages from the list #
     #--------------------------------#
+    install_pkg.install_aur_helper()
     pacman_pkgs, aur_pkgs = install_pkg.split_pkg(pkgs)
 
     print("Pacman Packages: ", pacman_pkgs)
@@ -109,7 +110,6 @@ if flg_Install:
     continue_setup = input("Do you wish to continue? [Y/n]")
     
     if continue_setup.lower() == "y":
-        install_pkg.install_aur_helper()
         install_pkg.install_pacman(pacman_pkgs)
         install_pkg.post_pacman_install_setup()
         install_pkg.install_aur(aur_pkgs)
