@@ -16,7 +16,7 @@ def configure():
             os.symlink(src=pkg.src_path, dst=pkg.dst_path, target_is_directory=pkg.is_directory)
         else:
             try:
-                shutil.copytree(src=pkg.src_path, dst=pkg.dst_path)
+                shutil.copytree(src=pkg.src_path, dst=pkg.dst_path, dirs_exist_ok=True)
             except PermissionError:
                 print("Permission denied. Trying as sudo...")
                 commands = ["sudo", "cp", "-r", pkg.src_path, pkg.dst_path]

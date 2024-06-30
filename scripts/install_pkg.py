@@ -88,21 +88,23 @@ def install_rust():
 
 def install_aur(pkgs: List):
     pkgs_to_install = " ".join(pkgs)
-    commands = [parameters.AUR, "-Sy", pkgs_to_install]
-    helpers.run(commands)
+    command = f"{parameters.AUR} -Sy {pkgs_to_install}"
+    helpers.run(command, shell=True)
 
 
 def install_eww():
     src_install_path = "./target/release/eww"
+    target_path = "../../configs/.config/myde/custScripts/eww"
     os.chdir("../source/eww")
-    if not helpers.pkg_available("rustup"):
+    if not helpers.pkg_status("rustup"):
         return "Rust not installed. Cancelling."
+    if os.path.exists(target_path):
+        return 
     
     print("\033[0;34m[custom]\033[0m Installing eww from submodule...")
 
     commands = ['cargo', 'build', '--release', '--no-default-features', '--features=wayland']
     helpers.run(commands)
-    target_path = "../../configs/.config/myde/custScripts/eww"
     print(f"\033[0;32m[Moving]\033[0m Eww: {src_install_path} ---> {target_path}")
     shutil.move(src_install_path, target_path)
     helpers.run(["rm", "-rf", "./target"])
