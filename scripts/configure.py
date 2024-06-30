@@ -17,6 +17,8 @@ def configure():
         else:
             try:
                 shutil.copytree(src=pkg.src_path, dst=pkg.dst_path, dirs_exist_ok=True)
+            except FileExistsError:
+                print("File already exists...")
             except PermissionError:
                 print("Permission denied. Trying as sudo...")
                 commands = ["sudo", "cp", "-r", pkg.src_path, pkg.dst_path]
