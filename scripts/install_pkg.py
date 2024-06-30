@@ -17,6 +17,9 @@ def install_aur_helper():
     if not helpers.pkg_status("git"):
         print("Git not installed.")
         sys.exit()
+    if not helpers.pkg_status("rustup"):
+        print("Rust not installed.")
+        sys.exit()
 
     aur_path = f"{parameters.CLONE_DIR}/{parameters.AUR}"
     aur_url = f"https://aur.archlinux.org/{parameters.AUR}.git"
@@ -70,12 +73,15 @@ def install_pacman(pkgs: Union[List, str]):
         print(f"Error: unknown package {pkgs_to_install}...")
         return
 
-    commands = ["sudo", "pacman", "-Sy", pkgs_to_install]
-    helpers.run(commands)
+    command = f"sudo pacman -Sy {pkgs_to_install}"
+    helpers.run(command, shell=True)
 
 
-def post_pacman_install_setup():
-    if helpers.pkg_status("rustup"):
+def install_rust():
+    if not helpers.pkg_status("rustup"):
+        commands = ["sudo", "pacman", "-S", "rustup"]
+        helpers.run(commands)
+
         commands = ["rustup", "install", "stable"]
         helpers.run(commands)
 

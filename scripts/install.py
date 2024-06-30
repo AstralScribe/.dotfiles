@@ -101,6 +101,8 @@ if flg_Install:
     #--------------------------------#
     # install packages from the list #
     #--------------------------------#
+    if not helpers.pkg_status("rustup"):
+        install_pkg.install_rust()
     install_pkg.install_aur_helper()
     pacman_pkgs, aur_pkgs = install_pkg.split_pkg(pkgs)
 
@@ -111,7 +113,6 @@ if flg_Install:
     
     if continue_setup.lower() == "y":
         install_pkg.install_pacman(pacman_pkgs)
-        install_pkg.post_pacman_install_setup()
         install_pkg.install_aur(aur_pkgs)
         install_pkg.install_eww()
         del pkgs, pacman_pkgs, aur_pkgs

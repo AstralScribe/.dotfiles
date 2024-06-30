@@ -63,7 +63,7 @@ packages = [
     "kvantum-qt5",                                          # svg based qt5 theme engine
     "qt5-wayland",                                          # wayland support in qt5
     "qt6-wayland",                                          # wayland support in qt6
-    "bibata-cursor-theme",                                  # cursors list
+    # "bibata-cursor-theme",                                  # cursors list
 
 # --------------------------------------------------------- // Applications
     "firefox",                                              # browser
