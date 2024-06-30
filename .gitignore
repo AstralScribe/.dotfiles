@@ -3,3 +3,4 @@ bfg-1.14.0.jar
 lazy-lock.json
 venv/
 target/
+__pycache__/

@@ -1,5 +1,4 @@
 import os
-import shutil
 import yaml
 
 import helpers
@@ -19,17 +18,16 @@ def configure():
                 print("File already exists...")
         else:
             try:
-                shutil.copytree(src=pkg.src_path, dst=pkg.dst_path, dirs_exist_ok=True)
-            except FileExistsError:
-                print("File already exists...")
-            except PermissionError:
+                commands = ["cp", "-r", pkg.src_path, pkg.dst_path]
+                helpers.run(commands)
+            except Exception:
                 print("Permission denied. Trying as sudo...")
                 commands = ["sudo", "cp", "-r", pkg.src_path, pkg.dst_path]
                 helpers.run(commands)
 
 
     print("\033[0;34m[Git]\033[0m De-initialising the submodules.")
-    helpers.run(["git", "submodules", "deinit", "--all"])
+    helpers.run("git submodule deinit --all", shell=True)
 
 def patch_themes():
     ...
