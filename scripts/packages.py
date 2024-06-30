@@ -43,7 +43,7 @@ packages = [
     "cliphist",                                             # clipboard manager
 
 # --------------------------------------------------------- // Dependencies
-    "polkit-gnome",                                         # authentication agent
+    "polkit-kde-agent",                                     # authentication agent
     "xdg-desktop-portal-hyprland",                          # xdg desktop portal for hyprland
     "pacman-contrib",                                       # for system update check
     # "python-pyamdgpuinfo",                                # for amd gpu info

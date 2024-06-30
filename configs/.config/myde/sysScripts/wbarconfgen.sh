@@ -3,9 +3,7 @@
 
 # read control file and initialize variables
 
-export scrDir="$(dirname "$(realpath "$0")")"
-source "${scrDir}/sys.conf"
-waybar_dir="${confDir}/waybar"
+waybar_dir="$XDG_CONFIG_HOME/waybar"
 modules_dir="$waybar_dir/modules"
 conf_file="$waybar_dir/config.jsonc"
 conf_ctl="$waybar_dir/config.ctl"

@@ -22,3 +22,6 @@ def configure():
                 commands = ["sudo", "cp", "-r", pkg.src_path, pkg.dst_path]
                 helpers.run(commands)
 
+
+    print("\033[0;34m[Git]\033[0m De-initialising the submodules.")
+    helpers.run(["git", "submodules", "deinit", "--all"])
