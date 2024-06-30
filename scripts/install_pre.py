@@ -27,7 +27,7 @@ def user_vars():
     file ="/etc/profile.d/user_vars.sh"
     if not os.path.exists(file):
         print("\033[0;32m[USER VARS]\033[0m adding global variables and path to the profile.d...")
-        commands = ["sudo", "cp" "user_vars.sh", file]
+        commands = ["sudo", "cp", "user_vars.sh", file]
         helpers.run(commands, output="null")
     else:
         print("\033[0;33m[SKIP]\033[0m user_vars.sh already present...")
