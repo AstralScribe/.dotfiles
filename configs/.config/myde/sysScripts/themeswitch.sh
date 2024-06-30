@@ -1,9 +1,30 @@
 #!/usr/bin/env sh
 
+source $XDG_CONFIG_HOME/myde/parameters.conf
+
+# Variables
 themePath="$XDG_CONFIG_HOME/myde/themes"
 gtk4ThemeDir=~/.local/share/themes
+roconf="$XDG_CONFIG_HOME/rofi/select-theme.rasi"
+roconf="../../rofi/select-theme.rasi"
 
-selectedTheme=$(find $themePath -maxdepth 0 -type d  -exec ls {} \; | rofi -dmenu)
+hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
+hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
+wind_border=$(( hypr_border * 3 ))
+
+[[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
+[ "${hypr_border}" -eq 0 ] && elem_border="10" || elem_border=$(( hypr_border * 2 ))
+
+# Overrides
+r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
+r_override="window {border: ${hypr_width}px; border-radius: ${wind_border}px;} element {border-radius: ${elem_border}px;}"
+
+selectedTheme=$(find $themePath -maxdepth 0 -type d  -exec ls {} \; | 
+    rofi -dmenu \
+    -theme-str "${r_scale}" \
+    -theme-str "${r_override}" \
+    -config "${roconf}"
+)
 
 if [ ! -z "${selectedTheme}" ] ; then
 
