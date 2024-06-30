@@ -28,3 +28,6 @@
 [submodule "configs/omz-plugins/plugins/zsh-syntax-highlighting"]
 	path = configs/omz-plugins/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "source/tela-icons"]
+	path = source/tela-icons
+	url = https://github.com/vinceliuice/Tela-icon-theme.git
