@@ -3,10 +3,10 @@ import shutil
 import yaml
 
 import helpers
-
+import parameters
 
 def configure():
-    with open("./config.yaml", "r") as f:
+    with open(parameters.CONFIG_FILE, "r") as f:
         CONFIGS = yaml.safe_load(f)
 
     for name, config in CONFIGS.items():
