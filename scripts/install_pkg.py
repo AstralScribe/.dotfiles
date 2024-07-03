@@ -24,7 +24,7 @@ def install_aur_helper():
     aur_path = f"{parameters.CLONE_DIR}/{parameters.AUR}"
     aur_url = f"https://aur.archlinux.org/{parameters.AUR}.git"
     commands = ['git', 'clone', aur_url, aur_path]
-    helpers.run(commands, output="null")
+    helpers.run(commands)
     os.chdir(f"{parameters.CLONE_DIR}/{parameters.AUR}")
     try:
         command = "makepkg -si"
