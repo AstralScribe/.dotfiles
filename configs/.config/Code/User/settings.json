@@ -1,9 +1,9 @@
 {
   "telemetry.telemetryLevel": "off",
-  // "redhat.telemetry.enabled": false,
+  "redhat.telemetry.enabled": false,
   "git.confirmSync": false,
   "git.autofetch": true,
-  "editor.fontFamily": "Fira Code, Droid Sans Mono, monospace, monospace",
+  "editor.fontFamily": "Fira Code, VictorMono Nerd Font, Droid Sans Mono, monospace, monospace",
   "editor.fontLigatures": true,
   "editor.fontWeight": "300",
   "editor.fontSize": 16,
@@ -13,11 +13,12 @@
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
   "explorer.confirmDragAndDrop": false,
-  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono, Hack Nerd Mono",
-  "terminal.integrated.fontWeight": "200",
+  "terminal.integrated.fontFamily": "VictorMono Nerd Font, Hack Nerd Mono",
+  "terminal.integrated.fontWeight": "600",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.explorerKind": "external",
   "terminal.external.linuxExec": "",
+  "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 0.5,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
@@ -26,7 +27,6 @@
   "material-icon-theme.opacity": 0.8,
   "material-icon-theme.activeIconPack": "react_redux",
   "explorer.confirmDelete": false,
-  "python.defaultInterpreterPath": "/home/mayank/Miniconda/envs/stt/bin/python",
   "python.languageServer": "Pylance",
   "python.analysis.completeFunctionParens": true,
   "python.analysis.diagnosticSeverityOverrides": {
@@ -45,13 +45,13 @@
   "jupyter.askForKernelRestart": false,
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
   "jupyter.logging.level": "error",
-  "notebook.output.textLineLimit": 50,
+  "notebook.output.textLineLimit": 20,
   "notebook.dragAndDropEnabled": false,
   "notebook.editorOptionsCustomizations": {
     "editor.wordWrap": "on"
   },
   "notebook.output.wordWrap": true,
-  "notebook.output.fontFamily": "JetBrains Mono",
+  "notebook.output.fontFamily": "JetBrainsMono Nerd Font Mono",
   "ruff.importStrategy": "fromEnvironment",
   "git.openRepositoryInParentFolders": "never",
   "gitlens.advanced.messages": { "suppressCommitNotFoundWarning": true },
@@ -77,14 +77,10 @@
     "**/.vscode": true
   },
   "window.menuBarVisibility": "toggle",
-  "workbench.colorCustomizations": {},
-  "editor.lineNumbers": "relative",
-  "editor.accessibilitySupport": "off",
-  "diffEditor.ignoreTrimWhitespace": false,
-  "background.windowBackgrounds": [
-    "/home/mayank/Pictures/wallpapers/wp7196356-purple-4k-wallpapers.jpg"
-  ],
-  "background.backgroundOpacity": [0.95, 0.9, 0.9, 0.9],
-  "workbench.activityBar.visible": false
+  "cloudcode.duetAI.project": "celestial-geode-350413",
+  "python.defaultInterpreterPath": "/home/mayank/Miniconda/envs/stt/bin/python",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {}
 }
-

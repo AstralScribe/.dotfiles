@@ -61,6 +61,8 @@ if [ ! -z "${selectedTheme}" ] ; then
     cp "$selectedThemeDir/kitty.theme" "$XDG_CONFIG_HOME/kitty/theme.conf"
     cp "$selectedThemeDir/rofi.theme" "$XDG_CONFIG_HOME/rofi/theme.rasi"
     cp "$selectedThemeDir/waybar.theme" "$XDG_CONFIG_HOME/waybar/theme.css"
+    cp "$selectedThemeDir/qt.theme" "$XDG_CONFIG_HOME/qt5ct/colors.conf"
+    cp "$selectedThemeDir/qt.theme" "$XDG_CONFIG_HOME/qt6ct/colors.conf"
 
 
     # Inits

@@ -52,7 +52,7 @@ eval "$(ssh-agent)" > /dev/null
 
 # >>> conda initialize >>>
 
-__conda_setup="$('/home/mayank/Miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/mayank/Miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -81,8 +81,8 @@ export NVM_DIR="$HOME/.nvm"
 # Renames
 alias vim=nvim
 alias vi=nvim
-alias code="code --ozone-platform-hint=wayland"
-alias code.="$code ."
+# alias code="code --ozone-platform-hint=wayland"
+alias code.="code ."
 
 # Remote Connections
 alias s="ssh"

@@ -4,3 +4,7 @@ lazy-lock.json
 venv/
 target/
 __pycache__/
+configs/.config/Code/
+!configs/.config/Code/User/keybindings.json
+!configs/.config/Code/User/settings.json
+theme.conf
