@@ -2,6 +2,9 @@
 
 ---
 
-- scripts
-  - global_fn.sh: functions and variables used in the scripts
-  - install_pre.sh: grub, systemd, pacman, user_vars.sh
+My dotfiles and setup scripts.
+
+### Inspiration
+
+- [HyDE](https://github.com/prasanthrangan/hyprdots)
+- [ML4W](https://gitlab.com/stephan-raabe/dotfiles)

@@ -45,7 +45,7 @@ export CUDA_HOME="/opt/cuda"
 
 source $ZSH/oh-my-zsh.sh
 eval "$(zoxide init zsh)"
-eval "$(ssh-agent)" > /dev/null
+# eval "$(ssh-agent)" &> /dev/null
 
 # <<< Source <<<
 
