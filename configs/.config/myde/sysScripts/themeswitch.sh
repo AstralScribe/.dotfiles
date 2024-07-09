@@ -58,7 +58,7 @@ if [ ! -z "${selectedTheme}" ] ; then
 
     cp "$selectedThemeDir/kvantum/kvconfig.theme" "$XDG_CONFIG_HOME/Kvantum/myde/myde.kvconfig" 
     cp "$selectedThemeDir/kvantum/svg.theme" "$XDG_CONFIG_HOME/Kvantum/wallbash/myde.svg" 
-    cp "$selectedThemeDir/kitty.theme" "$XDG_CONFIG_HOME/kitty/theme.conf"
+    # cp "$selectedThemeDir/kitty.theme" "$XDG_CONFIG_HOME/kitty/theme.conf"
     cp "$selectedThemeDir/rofi.theme" "$XDG_CONFIG_HOME/rofi/theme.rasi"
     cp "$selectedThemeDir/waybar.theme" "$XDG_CONFIG_HOME/waybar/theme.css"
     cp "$selectedThemeDir/qt.theme" "$XDG_CONFIG_HOME/qt5ct/colors.conf"
@@ -66,7 +66,7 @@ if [ ! -z "${selectedTheme}" ] ; then
 
 
     # Inits
-    killall -SIGUSR1 kitty
+    # killall -SIGUSR1 kitty
     killall waybar
     waybar > /dev/null 2>&1 &
     notify-send -a "t1" -i "$HOME/.config/dunst/icons/hyprdots.png" " $selectedTheme"

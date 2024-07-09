@@ -18,9 +18,20 @@ r_override="window {border: ${hypr_width}px; border-radius: ${wind_border}px;} e
 i_override="$(gsettings get org.gnome.desktop.interface icon-theme | sed "s/'//g")"
 i_override="configuration {icon-theme: \"${i_override}\";}"
 
+while getopts dr option; do
+    case $option in
+        d) runner="drun"
+            ;;
+        r) runner="run"
+            ;;
+        *) echo "Invalid"
+            exit 1;
+            ;;
+    esac
+done
 
 # Rofi
-rofi -show "drun" \
+rofi -show "$runner" \
     -theme-str "${r_scale}" \
     -theme-str "${r_override}" \
     -theme-str "${i_override}" \
