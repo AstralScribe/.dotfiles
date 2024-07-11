@@ -82,5 +82,6 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorCustomizations": {}
+  "workbench.colorCustomizations": {},
+  "workbench.activityBar.location": "hidden"
 }
