@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Directory to search for .venv folders
+SEARCH_DIR=${1:-.}
+
+# Find and delete .venv directories older than 30 days
+find "$SEARCH_DIR" -type d -name ".venv" -mtime +30 -exec rm -rf {} +
+find "$SEARCH_DIR" -type d -name "venv" -exec rm -rf {} +
+
+echo "Old .venv & venv directories deleted."
