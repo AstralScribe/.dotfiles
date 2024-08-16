@@ -68,17 +68,17 @@ rm -rf $cache_file
 ln -s $used_wallpaper $cache_file
 
 magick $cache_file \
-    -thumbnail "500x500^" \
+    -thumbnail "800x800^" \
     -gravity center \
-    -extent "500x500" \
+    -extent "800x800" \
     $cache_sqre_file
 
 magick $cache_sqre_file \
-    -size 500x500 xc:white \
+    -size 800x800 xc:white \
     -fill "rgba(0,0,0,0.7)" \
-    -draw "polygon 400,500 500,500 500,0 450,0" \
+    -draw "polygon 700,800 800,800 800,0 750,0" \
     -fill black \
-    -draw "polygon 500,500 500,0 450,500" \
+    -draw "polygon 800,800 800,0 750,800" \
     -alpha Off \
     -compose CopyOpacity \
     -composite "/tmp/cw.png" \

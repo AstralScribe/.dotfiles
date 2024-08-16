@@ -11,7 +11,7 @@ if not cmp_nvim_lsp_status then
 end
 
 -- import typescript plugin safely
-local typescript_setup, typescript =  pcall(require, "typescript")
+local typescript_setup, typescript = pcall(require, "typescript")
 if not typescript_setup then
   return
 end
@@ -25,18 +25,18 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   -- set keybinds
-  keymap.set("n", "gf", "<cmd>Lspsaga finder def+ref<CR>", opts) -- show definition, references
-  keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-  keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-  keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-  keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-  keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-  keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
+  keymap.set("n", "gf", "<cmd>Lspsaga finder def+ref<CR>", opts)                 -- show definition, references
+  keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)          -- got to declaration
+  keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)                -- see definition and make edits in window
+  keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)       -- go to implementation
+  keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)            -- see available code actions
+  keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)                 -- smart rename
+  keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)   -- show  diagnostics for line
   keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-  keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
-  keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-  keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-  keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+  keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)           -- jump to previous diagnostic in buffer
+  keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)           -- jump to next diagnostic in buffer
+  keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)                       -- show documentation for what is under cursor
+  keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)                 -- see outline on right hand side
 
   if client.name == "tsserver" then
     keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")
@@ -51,7 +51,17 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 --------------------------- Python Development --------------------------------
 
 -- configure python ruff server
-lspconfig.ruff_lsp.setup {
+-- lspconfig.ruff_lsp.setup {
+--   on_attach = on_attach,
+--   init_options = {
+--     settings = {
+--       -- Any extra CLI arguments for `ruff` go here.
+--       args = {},
+--     }
+--   }
+-- }
+
+lspconfig.ruff.setup {
   on_attach = on_attach,
   init_options = {
     settings = {
@@ -68,7 +78,7 @@ lspconfig.pyright.setup({
   on_attach = on_attach,
   -- root_dir = ,
   settings = {
-    pyright = {autoImportCompletion = true,},
+    pyright = { autoImportCompletion = true, },
     python = {
       analysis = {
         autoSearchPaths = true,
@@ -144,19 +154,18 @@ lspconfig.lua_ls.setup({
 })
 
 -- configure c/cpp/cuda lsp
-lspconfig.clangd.setup{}
+lspconfig.clangd.setup {}
 
 -- configure rust-analyzer
-lspconfig.rust_analyzer.setup{
+lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
-        enable = false;
+        enable = false,
       }
     }
   }
 }
 
 -- configure bash server
-lspconfig.bashls.setup{}
-
+lspconfig.bashls.setup {}

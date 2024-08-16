@@ -43,7 +43,7 @@ zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
+# zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -53,17 +53,7 @@ autoload -Uz compinit && compinit
 
 # >>> User configuration >>>
 
-# Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-
-# History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
+# Options
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -71,13 +61,65 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt correct                                                  # Auto correct mistakes
+
+
+# Keybindings
+bindkey -e
+
+bindkey '^[[7~' beginning-of-line                               # Home key
+bindkey '^[[H' beginning-of-line                                # Home key
+
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
+fi
+
+bindkey '^[[8~' end-of-line                                     # End key
+bindkey '^[[F' end-of-line                                     # End key
+
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
+fi
+
+bindkey '^[[2~' overwrite-mode                                  # Insert key
+bindkey '^[[3~' backward-kill-word                                     # Delete key
+bindkey '^[[C'  forward-char                                    # Right key
+bindkey '^[[D'  backward-char                                   # Left key
+# bindkey '^[[5~' history-beginning-search-backward               # Page up key
+# bindkey '^[[6~' history-beginning-search-forward                # Page down key
+
+# Navigate words with ctrl+arrow keys
+bindkey '^[Oc' forward-word                                     #
+bindkey '^[Od' backward-word                                    #
+bindkey '^[[1;5D' backward-word                                 #
+bindkey '^[[1;5C' forward-word                                  #
+bindkey '^[[Z' undo                                             # Shift+tab undo last action
+
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-search-backward
+bindkey "$terminfo[kcud1]" history-search-forward
+
+# History
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' menu no
+zstyle ':completion:*' rehash true                              # automatically find new executables in path 
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # <<< User configuration <<<
 
@@ -87,6 +129,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
 export CUDA_HOME="/opt/cuda"
+export PATH="$PATH:/usr/include/python3.12"
 
 # <<< Various Exports <<<
 
@@ -132,8 +175,9 @@ export NVM_DIR="$HOME/.nvm"
 alias ls='ls --color'
 alias vim=nvim
 alias vi=nvim
-# alias code="code --ozone-platform-hint=wayland"
+# alias code="code --hint"
 alias code.="code ."
+alias t="todo.sh"
 
 # Remote Connections
 alias s="ssh"
@@ -150,7 +194,6 @@ alias ca="conda activate"
 alias cod="conda deactivate"
 alias pa="source .venv/bin/activate"
 alias pd="deactivate"
-alias infer_env="source $HOME/Documents/dev-hub/neural-lab/.venv/bin/activate"
 
 # Package and Configs
 alias orphans="pacman -Qdtq"
