@@ -78,6 +78,7 @@
     pkgs.kdePackages.polkit-kde-agent-1
     pkgs.mpv
     pkgs.redis
+    pkgs.slack
 
     # Theming
     pkgs.nwg-look
