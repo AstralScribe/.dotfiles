@@ -12,7 +12,7 @@
   in
   {
     nixosConfigurations.Thinker-Laptop = lib.nixosSystem {
-      specialArgs = { inherit pkgs, upkgs; };
+      specialArgs = { inherit pkgs upkgs; };
       modules = [ ./configuration.nix ];
     };
   };

@@ -49,6 +49,7 @@
 
   # Desktop session
   programs.hyprland.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
 
   # User Account

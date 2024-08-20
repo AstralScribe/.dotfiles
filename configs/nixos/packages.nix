@@ -1,6 +1,4 @@
-{ pkgs, ... }: {
-
-  nixpkgs.config.allowUnfree = true;
+{ pkgs, upkgs, ... }: {
 
   programs.firefox.enable = true;
   programs.neovim.enable = true;
@@ -68,7 +66,7 @@
     pkgs.docker
     pkgs.nvidia-docker
     pkgs.firefox
-    pkgs.floorp
+    upkgs.floorp
     pkgs.git
     pkgs.imagemagick
     pkgs.kitty
