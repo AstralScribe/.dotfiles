@@ -7,8 +7,14 @@
   outputs = {nixpkgs, ...} @ inputs: 
   let
     lib = nixpkgs.lib;
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    upkgs = inputs.unstable_nixpkgs.legacyPackages.x86_64-linux;
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
+    upkgs = import inputs.unstable_nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
   in
   {
     nixosConfigurations.Thinker-Laptop = lib.nixosSystem {
