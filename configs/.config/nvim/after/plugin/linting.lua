@@ -14,7 +14,11 @@ lint.linters_by_ft = {
 }
 
 local cpplint = lint.linters.cpplint
-cpplint.args = { "--filter", "-legal/copyright,-runtime/indentation_namespace,-whitespace/indent" }
+cpplint.args = {
+  "--filter",
+  "-legal/copyright,-runtime/indentation_namespace,-whitespace/indent,-build/header_guard",
+  "--cxx11-unapproved-classes="
+}
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

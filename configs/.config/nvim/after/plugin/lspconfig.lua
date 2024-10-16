@@ -11,10 +11,10 @@ if not cmp_nvim_lsp_status then
 end
 
 -- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-  return
-end
+-- local typescript_setup, typescript = pcall(require, "typescript")
+-- if not typescript_setup then
+--   return
+-- end
 
 local keymap = vim.keymap
 
@@ -38,7 +38,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)                       -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)                 -- see outline on right hand side
 
-  if client.name == "tsserver" then
+  if client.name == "ts_ls" then
     keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")
   end
 end
@@ -103,12 +103,12 @@ lspconfig.html.setup({
 })
 
 -- configure typescript server with plugin
-typescript.setup({
-  server = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  },
-})
+-- typescript.setup({
+--   server = {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--   },
+-- })
 
 -- configure css server
 lspconfig.cssls.setup({
@@ -129,6 +129,11 @@ lspconfig.emmet_ls.setup({
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
 
+lspconfig.gopls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "go", "gomod", "gowork", "gotmpl" }
+})
 
 ---------------------------- Other languages ---------------------------
 
