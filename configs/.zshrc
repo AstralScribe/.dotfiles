@@ -13,13 +13,11 @@ fi
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
 # <<< Zinit <<<
@@ -113,7 +111,7 @@ HISTDUP=erase
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' menu no
-zstyle ':completion:*' rehash true                              # automatically find new executables in path 
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Speed up completions
@@ -126,10 +124,14 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # >>> Various Exports >>>
 
+export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
 export CUDA_HOME="/opt/cuda"
-export PATH="$PATH:/usr/include/python3.12"
+export C_INCLUDE_PATH="/usr/include/python3.12"
+export CPLUS_INCLUDE_PATH="/usr/include/python3.12"
+export PATH="$PATH:/home/mayank/go/bin"
+
 
 # <<< Various Exports <<<
 
@@ -138,7 +140,7 @@ export PATH="$PATH:/usr/include/python3.12"
 
 # eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 
 # <<< Source <<<
 
@@ -175,8 +177,8 @@ export NVM_DIR="$HOME/.nvm"
 alias ls='ls --color'
 alias vim=nvim
 alias vi=nvim
-# alias code="code --hint"
-alias code.="code ."
+alias code="code --ozone-platform=wayland"
+alias code.="$code ."
 alias t="todo.sh"
 
 # Remote Connections
@@ -210,6 +212,28 @@ mc() {
 }
 list_files() {
     find $1 -type f | wc -l
+}
+ts() {
+    number=$(echo "$1" | grep -o '^[0-9]\+' | xargs printf '%04d')
+    title=$(echo "$1" | sed 's/^[0-9]*\. //' | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+    touch "${number}_${title}"
+}
+
+cd() {
+  z $1 || return
+
+  if [ -n "$VIRTUAL_ENV" ]; then
+    deactivate
+  fi
+
+  if [ -d ".venv" ]; then
+    env_dir=".venv"
+  elif [ -d "venv" ]; then
+    env_dir="venv"
+  else
+    return
+  fi
+  source $env_dir/bin/activate
 }
 
 # VCS and Docker

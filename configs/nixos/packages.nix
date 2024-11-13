@@ -77,6 +77,7 @@
     pkgs.mpv
     pkgs.redis
     pkgs.slack
+    pkgs.asusctl
 
     # Theming
     pkgs.nwg-look

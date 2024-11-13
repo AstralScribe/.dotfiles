@@ -7,7 +7,7 @@ if wezterm.config_builder then
   Config = wezterm.config_builder()
 end
 
-Config.color_scheme = "Github Dark"
+-- Config.color_scheme = "Github Dark"
 -- Config.color_scheme = "Catppuccin Mocha"
 
 Config.font = wezterm.font { family = 'JetBrainsMono Nerd Font Mono', weight = "Light" }

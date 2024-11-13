@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 if pgrep -x "wlogout" > /dev/null
 then
@@ -9,8 +9,7 @@ fi
 
 
 source $XDG_CONFIG_HOME/myde/parameters.conf
-hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
-hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
+source $XDG_CONFIG_HOME/myde/sysScripts/globals.sh
 
 [ -z "${1}" ] || wlogoutStyle="${1}"
 wLayout="$XDG_CONFIG_HOME/wlogout/layout_${wlogoutStyle}"
@@ -26,9 +25,9 @@ fi
 
 #// detect monitor res
 
-x_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
-y_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .height')
-hypr_scale=$(hyprctl -j monitors | jq '.[] | select (.focused == true) | .scale' | sed 's/\.//')
+# x_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width') || 2560
+# y_mon=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .height') || 1440
+# hypr_scale=$(hyprctl -j monitors | jq '.[] | select (.focused == true) | .scale' | sed 's/\.//') || 160
 
 
 #// scale config layout and style

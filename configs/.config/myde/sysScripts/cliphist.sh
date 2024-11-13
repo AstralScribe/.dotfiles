@@ -1,20 +1,18 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 
 #// set variables
 source $XDG_CONFIG_HOME/myde/parameters.conf
-roconf="$XDG_CONFIG_HOME/rofi/clipboard.rasi"
-hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
-hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
+source $XDG_CONFIG_HOME/myde/sysScripts/globals.sh
 
 
-#// set rofi scaling
+#// set rofi variables
 
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 r_scale="configuration {font: \"JetBrainsMono Nerd Font ${rofiScale}\";}"
 wind_border=$((hypr_border * 3 / 2))
 elem_border=$([ $hypr_border -eq 0 ] && echo "5" || echo $hypr_border)
-
+roconf="$XDG_CONFIG_HOME/rofi/clipboard.rasi"
 
 #// evaluate spawn position
 

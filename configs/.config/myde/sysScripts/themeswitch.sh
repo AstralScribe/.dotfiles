@@ -1,15 +1,13 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 source $XDG_CONFIG_HOME/myde/parameters.conf
+source $XDG_CONFIG_HOME/myde/sysScripts/globals.sh
 
 # Variables
 themePath="$XDG_CONFIG_HOME/myde/themes"
 gtk4ThemeDir=~/.local/share/themes
 roconf="$XDG_CONFIG_HOME/rofi/select-theme.rasi"
 
-hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
-hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
-wind_border=$(( hypr_border * 3 ))
 
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 [ "${hypr_border}" -eq 0 ] && elem_border="10" || elem_border=$(( hypr_border * 2 ))
@@ -41,7 +39,6 @@ if [ ! -z "${selectedTheme}" ] ; then
 
 
     # QT/GTK theme edits
-
     sed -i "/^icon_theme=/c\icon_theme=${gtkIcon}" "$XDG_CONFIG_HOME/qt5ct/qt5ct.conf"
     sed -i "/^icon_theme=/c\icon_theme=${gtkIcon}" "$XDG_CONFIG_HOME/qt6ct/qt6ct.conf"
 
@@ -55,10 +52,8 @@ if [ ! -z "${selectedTheme}" ] ; then
 
 
     # Theme copies
-
     cp "$selectedThemeDir/kvantum/kvconfig.theme" "$XDG_CONFIG_HOME/Kvantum/myde/myde.kvconfig" 
     cp "$selectedThemeDir/kvantum/svg.theme" "$XDG_CONFIG_HOME/Kvantum/wallbash/myde.svg" 
-    # cp "$selectedThemeDir/kitty.theme" "$XDG_CONFIG_HOME/kitty/theme.conf"
     cp "$selectedThemeDir/rofi.theme" "$XDG_CONFIG_HOME/rofi/theme.rasi"
     cp "$selectedThemeDir/waybar.theme" "$XDG_CONFIG_HOME/waybar/theme.css"
     cp "$selectedThemeDir/qt.theme" "$XDG_CONFIG_HOME/qt5ct/colors.conf"
@@ -66,8 +61,7 @@ if [ ! -z "${selectedTheme}" ] ; then
 
 
     # Inits
-    # killall -SIGUSR1 kitty
-    killall waybar
+    pkill waybar
     waybar > /dev/null 2>&1 &
     notify-send -a "t1" -i "$HOME/.config/dunst/icons/hyprdots.png" " $selectedTheme"
 fi

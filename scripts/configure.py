@@ -39,6 +39,7 @@ def configure_display_manager():
         print("\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm...")
 
     helpers.run("sudo touch /etc/sddm.conf.d/kde_settings.conf", shell=True)
+    helpers.run("sudo cp -r ~/.dotfiles/configs/sddm/Candy /usr/share/sddm/themes/Candy", shell=True)
     helpers.run("sudo cp /etc/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.t2.bkp", shell=True)
     helpers.run("sudo cp /usr/share/sddm/themes/Candy/kde_settings.conf /etc/sddm.conf.d/", shell=True)
 

@@ -1,175 +1,401 @@
 import os
 import subprocess
 
-from libqtile import bar, hook, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import bar, layout, qtile, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, hook
 from libqtile.lazy import lazy
 
-mod = "mod4"
-# terminal = "wezterm"
-terminal = "alacritty"
+super = "mod4"
+alt = "mod1"
+terminal = "kitty"
+filemanager = "thunar"
+
+# █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀ █▀
+# █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█ ▄█
 
 
-@hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.Popen([home])
+keys = []
 
-keys = [
-    # Terminal
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
-    # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+# Application Shortcuts
+keys.extend(
+    [
+        Key([super], "t", lazy.spawn(terminal), desc="Launch terminal"),
+        Key([super], "e", lazy.spawn(filemanager), desc="file manager"),
+    ]
+)
 
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    
-    # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key(
-        [mod],
-        "f",
-        lazy.window.toggle_fullscreen(),
-        desc="Toggle fullscreen on the focused window",
-    ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-]
+# Global Shortcuts
+keys.extend(
+    [
+        Key([super], "Delete", lazy.shutdown(), desc="Shutdown Qtile"),
+        Key([super, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+        Key([super], "q", lazy.window.kill(), desc="Kill focused window"),
+        Key([super], "a", lazy.spawn("rofilaunch.sh -d"), desc="Spawn a command using a prompt widget"),
+    ]
+)
 
-groups = [Group(i) for i in "123456789"]
+
+Window movements
+keys.extend(
+    [
+        # Move Focus
+        Key([super], "h", lazy.layout.left(), desc="Move focus to left"),
+        Key([super], "l", lazy.layout.right(), desc="Move focus to right"),
+        Key([super], "j", lazy.layout.down(), desc="Move focus down"),
+        Key([super], "k", lazy.layout.up(), desc="Move focus up"),
+        Key([super], "space", lazy.layout.next(), desc="Move window focus to other window"),
+        # Move Window
+        Key([super, "control"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+        Key([super, "control"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+        Key([super, "control"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+        Key([super, "control"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+        # Grow size
+        Key([super, "shift"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+        Key([super, "shift"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+        Key([super, "shift"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+        Key([super, "shift"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+        # Reset/Fullscreen
+        Key([super], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+        Key([alt], "Return", lazy.window.toggle_fullscreen()),
+    ]
+)
+
+# Key(
+#     [mod, "shift"],
+#     "Return",
+#     lazy.layout.toggle_split(),
+#     desc="Toggle between split and unsplit sides of stack",
+# ),
+
+
+# Global Controls
+# keys.extend(
+#     [
+#         Key([mod], "Delete", lazy.shutdown(), desc="Shutdown Qtile"),
+#         Key([mod], "a", lazy.command("rofilaunch.sh -d"), desc="Spawn a command using a prompt widget"),
+#     ]
+# )
+
+
+keys.extend(
+    #     [
+    #         Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    #         Key([mod], "p", lazy.spawn("sh -c ~/.config/rofi/scripts/power"), desc="powermenu"),
+    #         Key(
+    #             [mod],
+    #             "t",
+    #             lazy.spawn("sh -c ~/.config/rofi/scripts/theme_switcher"),
+    #             desc="theme_switcher",
+    #         ),
+    #         # C U S T O M
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("volumecontrol.sh -o i"), desc="Volume Up"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("volumecontrol.sh -o d"), desc="volume down"),
+    Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc="Volume Mute"),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="playerctl"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="playerctl"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="playerctl"),
+    #         Key(
+    #             [],
+    #             "XF86MonBrightnessUp",
+    #             lazy.spawn("brightnessctl s 10%+"),
+    #             desc="brightness UP",
+    #         ),
+    #         Key(
+    #             [],
+    #             "XF86MonBrightnessDown",
+    #             lazy.spawn("brightnessctl s 10%-"),
+    #             desc="brightness Down",
+    #         ),
+    #         Key([mod], "h", lazy.spawn("roficlip"), desc="clipboard"),
+    #         Key([mod], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
+    #     ]
+)
+
+
+# █▀▀ █▀█ █▀█ █░█ █▀█ █▀
+# █▄█ █▀▄ █▄█ █▄█ █▀▀ ▄█
+
+
+groups = [Group(f"{i+1}", label="") for i in range(8)]
 
 for i in groups:
     keys.extend(
         [
-            # mod1 + letter of group = switch to group
             Key(
-                [mod],
+                [super],
                 i.name,
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
-                [mod, "shift"],
+                [super, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
 
+
+# L A Y O U T S
+
+
+lay_config = {
+    "border_width": 0,
+    "margin": 9,
+    "border_focus": "3b4252",
+    "border_normal": "3b4252",
+    "font": "FiraCode Nerd Font",
+    "grow_amount": 2,
+}
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    # layout.MonadWide(**lay_config),
+    layout.Bsp(**lay_config, fair=False, border_on_single=True),
+    layout.Columns(
+        **lay_config,
+        border_on_single=True,
+        num_columns=2,
+        split=False,
+    ),
+    # Plasma(lay_config, border_normal_fixed='#3b4252', border_focus_fixed='#3b4252', border_width_single=3),
+    # layout.RatioTile(**lay_config),
+    # layout.VerticalTile(**lay_config),
+    # layout.Matrix(**lay_config, columns=3),
+    # layout.Zoomy(**lay_config),
+    # layout.Slice(**lay_config, width=1920, fallback=layout.TreeTab(), match=Match(wm_class="joplin"), side="right"),
+    # layout.MonadTall(**lay_config),
+    # layout.Tile(shift_windows=True, **lay_config),
+    # layout.Stack(num_stacks=2, **lay_config),
+    layout.Floating(**lay_config),
+    layout.Max(**lay_config),
 ]
+
 
 widget_defaults = dict(
     font="sans",
     fontsize=12,
     padding=3,
 )
-extension_defaults = widget_defaults.copy()
+extension_defaults = [widget_defaults.copy()]
+
+
+def search():
+    qtile.cmd_spawn("rofilaunch.sh -d")
+
+
+def power():
+    qtile.cmd_spawn("logoutlaunch.sh 1")
+
+
+# █▄▄ ▄▀█ █▀█
+# █▄█ █▀█ █▀▄
+
 
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.Spacer(
+                    length=15,
+                    background="#282738",
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                # widget.Image(
+                #     filename="~/.config/qtile/Assets/launch_Icon.png",
+                #     margin=2,
+                #     background="#282738",
+                #     mouse_callbacks={"Button1": power},
+                # ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/6.png",
+                ),
+                widget.GroupBox(
+                    font="JetBrainsMono Nerd Font",
+                    fontsize=24,
+                    borderwidth=3,
+                    highlight_method="block",
+                    active="#CAA9E0",
+                    block_highlight_text_color="#91B1F0",
+                    highlight_color="#353446",
+                    inactive="#282738",
+                    foreground="#4B427E",
+                    background="#353446",
+                    this_current_screen_border="#353446",
+                    this_screen_border="#353446",
+                    other_current_screen_border="#353446",
+                    other_screen_border="#353446",
+                    urgent_border="#353446",
+                    rounded=True,
+                    disable_drag=True,
+                ),
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/1.png",
+                ),
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths=["~/.config/qtile/Assets/layout"],
+                    background="#353446",
+                    scale=0.50,
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/5.png",
+                ),
+                widget.TextBox(
+                    text=" ",
+                    font="Font Awesome 6 Free Solid",
+                    fontsize=13,
+                    background="#282738",
+                    foreground="#CAA9E0",
+                    mouse_callbacks={"Button1": search},
+                ),
+                widget.TextBox(
+                    fmt="Search",
+                    background="#282738",
+                    font="JetBrainsMono Nerd Font Bold",
+                    fontsize=13,
+                    foreground="#CAA9E0",
+                    mouse_callbacks={"Button1": search},
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/4.png",
+                ),
+                widget.WindowName(
+                    background="#353446",
+                    font="JetBrainsMono Nerd Font Bold",
+                    fontsize=13,
+                    empty_group_string="Desktop",
+                    max_chars=130,
+                    foreground="#CAA9E0",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/3.png",
+                ),
+                widget.Systray(
+                    background="#282738",
+                    fontsize=2,
+                ),
+                widget.TextBox(
+                    text=" ",
+                    background="#282738",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/6.png",
+                    background="#353446",
+                ),
+                # widget.TextBox(
+                #     text="",
+                #     font="Font Awesome 6 Free Solid",
+                #     fontsize=13,
+                #     background="#353446",
+                #     foreground="#CAA9E0",
+                # ),
+                # widget.Memory(
+                #     background="#353446",
+                #     format="{MemUsed: .0f}{mm}",
+                #     foreground="#CAA9E0",
+                #     font="JetBrainsMono Nerd Font Bold",
+                #     fontsize=13,
+                #     update_interval=5,
+                # ),
+                # widget.Image(
+                #     filename="~/.config/qtile/Assets/2.png",
+                # ),
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
+                ),
+                widget.TextBox(
+                    text=" ",
+                    font="Font Awesome 6 Free Solid",
+                    fontsize=13,
+                    background="#353446",
+                    foreground="#CAA9E0",
+                ),
+                widget.Battery(
+                    font="JetBrainsMono Nerd Font Bold",
+                    fontsize=13,
+                    background="#353446",
+                    foreground="#CAA9E0",
+                    format="{percent:2.0%}",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/2.png",
+                ),
+                widget.Spacer(
+                    length=8,
+                    background="#353446",
+                ),
+                widget.TextBox(
+                    text=" ",
+                    font="Font Awesome 6 Free Solid",
+                    fontsize=13,
+                    background="#353446",
+                    foreground="#CAA9E0",
+                ),
+                widget.Volume(
+                    font="JetBrainsMono Nerd Font Bold",
+                    fontsize=13,
+                    background="#353446",
+                    foreground="#CAA9E0",
+                ),
+                widget.Image(
+                    filename="~/.config/qtile/Assets/5.png",
+                    background="#353446",
+                ),
+                widget.TextBox(
+                    text=" ",
+                    font="Font Awesome 6 Free Solid",
+                    fontsize=13,
+                    background="#282738",
+                    foreground="#CAA9E0",
+                ),
+                widget.Clock(
+                    format="%I:%M %p",
+                    background="#282738",
+                    foreground="#CAA9E0",
+                    font="JetBrainsMono Nerd Font Bold",
+                    fontsize=13,
+                ),
+                widget.Spacer(
+                    length=18,
+                    background="#282738",
+                ),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            30,
+            border_color="#282738",
+            border_width=[0, 0, 0, 0],
+            margin=[10, 6, 6, 6],
         ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
-        wallpaper="/home/mayank/Downloads/DALL·E 2024-01-19 11.41.28 - A 4K resolution wallpaper of a narrow alley in a cyberpunk city during a blackout. The scene is set at night with heavy rainfall, and the only light s.png",
-        wallpaper_mode="fill"
-
     ),
-    # Screen(
-    #     wallpaper="~/Pictures/wallpapers/Black-And-Gold-Marble-Minimalist-Wallpapers.png",
-    #     wallpaper_mode="stretch"
-    # )
 ]
+
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
+    Drag(
+        [super],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag([super], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click([super], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
-floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_focus="#1F1D2E",
+    border_normal="#1F1D2E",
+    border_width=0,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -179,8 +405,16 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-    ]
+    ],
 )
+
+
+# stuff
+@hook.subscribe.startup_once
+def autostart():
+    subprocess.call([os.path.expanduser(".config/qtile/autostart_once.sh")])
+
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

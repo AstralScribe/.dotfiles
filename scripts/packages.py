@@ -7,7 +7,7 @@ packages = [
     "pipewire-pulse",                                       # pipewire pulseaudio client
     "gst-plugin-pipewire",                                  # pipewire gstreamer client
     "wireplumber",                                          # pipewire session manager
-    "pavucontrol",                                          # pulseaudio volume control
+    "pavucontrol-qt",                                          # pulseaudio volume control
     "pamixer",                                              # pulseaudio cli mixer
     "networkmanager",                                       # network manager
     "network-manager-applet",                               # network manager system tray utility
@@ -29,8 +29,6 @@ packages = [
 
 # --------------------------------------------------------- // Window Manager
     "hyprland",                                             # wlroots-based wayland compositor
-    "qtile",
-    "python-pywlroots",
     "dunst",                                                # notification daemon
     "rofi-wayland",                                         # application launcher
     "waybar",                                               # system bar
@@ -41,6 +39,7 @@ packages = [
     "slurp",                                                # region select for screenshot/screenshare
     "swappy",                                               # screenshot editor
     "cliphist",                                             # clipboard manager
+    "grim",                                                 # screenshot app
 
 # --------------------------------------------------------- // Dependencies
     "polkit-kde-agent",                                     # authentication agent
@@ -69,8 +68,8 @@ packages = [
     "firefox",                                              # browser
     "floorp-bin",                                           # browser
     "kitty",                                                # terminal
-    "thunar",                                               # file manager
-    # "ark",                                                # kde file archiver
+    "dolphin",                                              # file manager
+    "ark",                                                  # kde file archiver
     "vim",                                                  # terminal text editor
     "neovim",                                               # terminal text editor
     "mpv",                                                  # video player

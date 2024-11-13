@@ -6,41 +6,32 @@
   "editor.fontFamily": "Fira Code, VictorMono Nerd Font, Droid Sans Mono, monospace, monospace",
   "editor.fontLigatures": true,
   "editor.fontWeight": "300",
-  "editor.fontSize": 16,
+  "editor.fontSize": 18,
   // "editor.hover.enabled": false,
   "editor.inlayHints.enabled": "off",
   "editor.parameterHints.enabled": false,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
   "explorer.confirmDragAndDrop": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.fontFamily": "VictorMono Nerd Font, Hack Nerd Mono",
   "terminal.integrated.fontWeight": "600",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.explorerKind": "external",
-  "terminal.external.linuxExec": "",
+  "terminal.external.linuxExec": "kitty",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.lineHeight": 0.5,
+  "workbench.colorTheme": "Kanagawa",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "workbench.productIconTheme": "material-product-icons",
+  "workbench.activityBar.location": "hidden",
   "material-icon-theme.folders.color": "#42a5f5",
-  "material-icon-theme.opacity": 0.8,
+  "material-icon-theme.opacity": 1,
   "material-icon-theme.activeIconPack": "react_redux",
   "explorer.confirmDelete": false,
   "python.languageServer": "Pylance",
   "python.analysis.completeFunctionParens": true,
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportGeneralTypeIssues": "none",
-    "reportOptionalSubscript": "none",
-    "reportUnboundVariable": "none",
-    "reportOptionalMemberAccess": "none",
-    "reportMissingImports": "none",
-    "reportOptionalCall": "none",
-    "reportOptionalOperand": "none",
-    "reportPrivateImportUsage": "none",
-    "reportUnusedCoroutine": "none",
-    "reportMissingModuleSource": "none"
-  },
   "jupyter.useDefaultConfigForJupyter": false,
   "jupyter.askForKernelRestart": false,
   "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
@@ -50,7 +41,6 @@
   "notebook.editorOptionsCustomizations": {
     "editor.wordWrap": "on"
   },
-  "notebook.output.wordWrap": true,
   "notebook.output.fontFamily": "JetBrainsMono Nerd Font Mono",
   "ruff.importStrategy": "fromEnvironment",
   "git.openRepositoryInParentFolders": "never",
@@ -73,8 +63,7 @@
   "cmake.configureOnOpen": true,
   "files.exclude": {
     "**/__pycache__": true,
-    "**/.ipynb_checkpoints": true,
-    "**/.vscode": true
+    "**/.ipynb_checkpoints": true
   },
   "window.menuBarVisibility": "toggle",
   "cloudcode.duetAI.project": "celestial-geode-350413",
@@ -83,5 +72,13 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.colorCustomizations": {},
-  "workbench.activityBar.location": "hidden"
+  "notebook.output.wordWrap": true,
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
+  "editor.wordWrap": "on",
+  "cmake.showOptionsMovedNotification": false,
+  "C_Cpp.intelliSenseEngineFallback": "enabled"
 }
+

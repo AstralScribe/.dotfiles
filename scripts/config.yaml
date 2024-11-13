@@ -162,13 +162,3 @@ kdeglobals:
   dst_path: ~/.config/kdeglobals
   is_directory: false
   is_symlink: false
-
-#------------------------#
-# Configs requiring sudo #
-#------------------------#
-
-sddm:
-  src_path: ~/.dotfiles/configs/sddm/Candy
-  dst_path: /usr/share/sddm/themes/Candy
-  is_directory: true
-  is_symlink: false

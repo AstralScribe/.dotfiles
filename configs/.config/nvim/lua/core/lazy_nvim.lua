@@ -31,6 +31,7 @@ local plugins = {
   "folke/trouble.nvim",
   "ThePrimeagen/harpoon",
   -- "jamestthompson3/nvim-remote-containers",
+  "t-troebst/perfanno.nvim",
 
   -- navigation
   "christoomey/vim-tmux-navigator", -- split windows and navigation
@@ -102,6 +103,7 @@ local plugins = {
     event = { "BufReadPre", "BufNewFile" },
   },
   "fatih/vim-go",
+  "Civitasv/cmake-tools.nvim",
 
 
   -- debugger setup

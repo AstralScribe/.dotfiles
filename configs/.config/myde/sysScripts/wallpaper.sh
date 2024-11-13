@@ -1,7 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 
 source $XDG_CONFIG_HOME/myde/parameters.conf
+source $XDG_CONFIG_HOME/myde/sysScripts/globals.sh
 
 # check swww daemon
 swww query &> /dev/null
@@ -16,14 +17,12 @@ BASE_FOLDER="$XDG_CONFIG_HOME/myde/wallpapers"
 cache_file="$HOME/.cache/myde/current_wallpaper"
 cache_sqre_file="$HOME/.cache/myde/cw.sqre"
 cache_quad_file="$HOME/.cache/myde/cw.quad"
+cache_blur_file="$HOME/.cache/myde/cw.blur"
 roconf="$XDG_CONFIG_HOME/rofi/select-wallpaper.rasi"
 transition_type="random"
 # transition_type="wipe"
 # transition_type="outer"
 
-hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
-hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
-wind_border=$(( hypr_border * 3 ))
 
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 [ "${hypr_border}" -eq 0 ] && elem_border="10" || elem_border=$(( hypr_border * 2 ))
@@ -83,6 +82,8 @@ magick $cache_sqre_file \
     -compose CopyOpacity \
     -composite "/tmp/cw.png" \
     && mv "/tmp/cw.png" $cache_quad_file 
+
+magick $cache_file -blur "50x30" $cache_blur_file
 
 swww img $cache_file \
     --transition-bezier .43,1.19,1,.4 \

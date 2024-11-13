@@ -2,12 +2,9 @@
 
 
 source $XDG_CONFIG_HOME/myde/parameters.conf
+source $XDG_CONFIG_HOME/myde/sysScripts/globals.sh
 
 # Variables
-roconf="$XDG_CONFIG_HOME/rofi/select-launcher.rasi"
-hypr_border="$(hyprctl -j getoption decoration:rounding | jq '.int')"
-hypr_width="$(hyprctl -j getoption general:border_size | jq '.int')"
-wind_border=$(( hypr_border * 3 ))
 
 [[ "${rofiScale}" =~ ^[0-9]+$ ]] || rofiScale=10
 [ "${hypr_border}" -eq 0 ] && elem_border="10" || elem_border=$(( hypr_border * 2 ))

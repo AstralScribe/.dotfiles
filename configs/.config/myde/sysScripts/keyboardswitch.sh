@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 hyprctl devices -j | jq -r '.keyboards[].name' | while read keyName
 do
