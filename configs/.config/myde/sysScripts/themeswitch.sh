@@ -29,7 +29,7 @@ if [ ! -z "${selectedTheme}" ] ; then
     selectedThemeDir="$themePath/$selectedTheme"
 
     gtkTheme="$(grep 'gsettings set org.gnome.desktop.interface gtk-theme' "${selectedThemeDir}/hypr.theme" | 
-        awk -F "'" '{print $(NF - 1)}')"
+        awk -F "'" '{print $(NF - 1)}') | "
     gtkIcon="$(grep 'gsettings set org.gnome.desktop.interface icon-theme' "${selectedThemeDir}/hypr.theme" | 
         awk -F "'" '{print $(NF - 1)}')"
     gtkMode="$(grep 'gsettings set org.gnome.desktop.interface color-scheme' "${selectedThemeDir}/hypr.theme" | 
