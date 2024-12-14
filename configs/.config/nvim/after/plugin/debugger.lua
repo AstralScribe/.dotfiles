@@ -58,13 +58,24 @@ dappy.setup(deubug_path)
 -- dap-cpp
 dap.configurations.cpp = {
   {
-    name = "Debug using codelldb",
+    name = "debug using codelldb",
     type = "codelldb",
     request = "launch",
     program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+      return vim.fn.input("path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
-    cwd = "${workspaceFolder}",
+    cwd = "${workspacefolder}",
+  },
+}
+dap.configurations.c = {
+  {
+    name = "debug using codelldb",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = vim.fn.getcwd(),
   },
 }
 dap.adapters.codelldb = {

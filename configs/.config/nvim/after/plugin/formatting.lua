@@ -23,7 +23,7 @@ conform.setup({
   },
   formatters = {
     -- ["clang-format"] = { prepend_args = { "-style", "{BasedOnStyle: google, NamespaceIndentation: All}" } },
-    ["clang-format"] = { prepend_args = { "-style", "{BasedOnStyle: google}" } },
+    ["clang-format"] = { prepend_args = { "-style", "{BasedOnStyle: google, Standard: c++20}" } },
     ["ruff_format"] = {}
   },
   format_on_save = {

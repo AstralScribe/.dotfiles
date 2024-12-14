@@ -91,6 +91,7 @@ local plugins = {
   "hrsh7th/cmp-nvim-lsp",
   "nvimdev/lspsaga.nvim",
   "onsails/lspkind.nvim",
+  "ranjithshegde/ccls.nvim",
   "jose-elias-alvarez/typescript.nvim",
   {
     "stevearc/conform.nvim",
