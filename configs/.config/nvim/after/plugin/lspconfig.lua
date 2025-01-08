@@ -73,11 +73,11 @@ lspconfig.pyright.setup({
 
 
 -------------------------- C/C++ Development -------------------------------
--- lspconfig.clangd.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
---
+lspconfig.clangd.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 local ccls_config = {
   cmd = { 'ccls' },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
