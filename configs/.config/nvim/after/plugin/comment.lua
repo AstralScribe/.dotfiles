@@ -3,4 +3,11 @@ if not setup then
   return
 end
 
-comment.setup()
+comment.setup({
+  toggler = {
+    line = "<C-/>",
+  },
+  opleader = {
+    line = "<C-/>"
+  },
+})

@@ -109,7 +109,8 @@ SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
+# zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[_-]=*'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' menu no
 zstyle ':completion:*' rehash true                              # automatically find new executables in path
@@ -128,9 +129,9 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
-export CUDA_HOME="/opt/cuda"
-export C_INCLUDE_PATH="/usr/include/python3.12"
-export CPLUS_INCLUDE_PATH="/usr/include/python3.12"
+# export CUDA_HOME="/opt/cuda"
+# export C_INCLUDE_PATH="/usr/include/python3.12"
+# export CPLUS_INCLUDE_PATH="/usr/include/python3.12"
 
 
 # <<< Various Exports <<<

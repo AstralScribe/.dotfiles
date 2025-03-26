@@ -5,7 +5,7 @@ DEVELOPMENT=~/Documents/dev-hub
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Documents/work/codebase $DEVELOPMENT $DEVELOPMENT/sandbox $DEVELOPMENT/neural-lab -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/Documents/work-core/codebase $DEVELOPMENT $DEVELOPMENT/sandbox $DEVELOPMENT/neural-lab $DEVELOPMENT/study-repos -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

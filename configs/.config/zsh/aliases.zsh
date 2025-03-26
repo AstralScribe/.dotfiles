@@ -1,6 +1,7 @@
 # >>> Alias >>>
 
 # Renames
+# alias ls='LC_COLLATE=C ls -l --color'
 alias ls='ls --color'
 alias vim=nvim
 alias vi=nvim
