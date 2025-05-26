@@ -10,4 +10,4 @@ CONF_DIR = f"{HOME_DIR}/.config"
 CACHE_DIR = f"{HOME_DIR}/.cache/myde"
 CLONE_DIR = f"{CACHE_DIR}/clone"
 
-CONFIG_FILE = f"{HOME_DIR}/.dotfiles/scripts/config.yaml"
+CONFIG_FILE = f"{HOME_DIR}/.dotfiles/scripts/config.txt"

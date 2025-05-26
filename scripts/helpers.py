@@ -2,16 +2,16 @@ import os
 import re
 import subprocess
 from typing import List, Optional
+from dataclasses import dataclass
 
 import parameters
 
-
-class AttrDict(dict):
-    def __init__(self, *args, **kwargs):
-        super(AttrDict, self).__init__(*args, **kwargs)
-        temp = {k:os.path.expanduser(v) if isinstance(v,str) else v for k,v in self.items()}
-        self.__dict__ = temp
-
+@dataclass
+class Packages:
+    src_path: str
+    dst_path: str
+    is_symlink: bool = False
+    is_directory: bool = False
 
 if not os.path.exists(parameters.CLONE_DIR):
     os.makedirs(parameters.CLONE_DIR, exist_ok=True)
@@ -20,7 +20,7 @@ if not os.path.exists(parameters.CLONE_DIR):
     print(f"Cloning directory created at {parameters.CLONE_DIR}")
 
 
-def run(commands: List, output: Optional[str]=None, check:bool=True, **kwargs) -> subprocess.CompletedProcess:
+def run(commands: List| str, output: Optional[str]=None, check:bool=True, **kwargs) -> subprocess.CompletedProcess:
     if output == "null":
         out = subprocess.run(commands, check=check, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, **kwargs)
     elif output == "pipe_out":

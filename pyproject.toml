@@ -1,2 +1,17 @@
-[tool.ruff]
-ignore = ["*"]
+[project]
+name = "dotfiles"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Mayank Sinha", email = "sinha.mayank900@gmail.com" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[tool.rye]
+managed = true
+virtual = true
+dev-dependencies = [
+    "ruff>=0.11.11",
+]
