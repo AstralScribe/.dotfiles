@@ -93,7 +93,7 @@ if flg_Install:
         out = helpers.run(command, check=False, shell=True, output="pipe", text=True)
         krnl = out.stdout.strip()
         pkgs.append(f"{krnl}-headers")
-        pkgs.extend(helpers.nvidia_detect("drivers"))
+        # pkgs.extend(helpers.nvidia_detect("drivers"))
         helpers.nvidia_detect("verbose")
 
     pkgs.extend(packages.packages)
@@ -114,7 +114,7 @@ if flg_Install:
     if continue_setup.lower() == "y":
         install_pkg.install_pacman(pacman_pkgs)
         install_pkg.install_aur(aur_pkgs)
-        install_pkg.install_eww()
+        # install_pkg.install_eww()
         del pkgs, pacman_pkgs, aur_pkgs
     else:
         sys.exit()

@@ -7,7 +7,7 @@ packages = [
     "pipewire-pulse",                                       # pipewire pulseaudio client
     "gst-plugin-pipewire",                                  # pipewire gstreamer client
     "wireplumber",                                          # pipewire session manager
-    "pavucontrol-qt",                                          # pulseaudio volume control
+    "pavucontrol-qt",                                       # pulseaudio volume control
     "pamixer",                                              # pulseaudio cli mixer
     "networkmanager",                                       # network manager
     "network-manager-applet",                               # network manager system tray utility
@@ -45,7 +45,6 @@ packages = [
     "polkit-kde-agent",                                     # authentication agent
     "xdg-desktop-portal-hyprland",                          # xdg desktop portal for hyprland
     "pacman-contrib",                                       # for system update check
-    # "python-pyamdgpuinfo",                                # for amd gpu info
     "parallel",                                             # for parallel processing
     "jq",                                                   # for json processing
     "imagemagick",                                          # for image processing
@@ -68,7 +67,7 @@ packages = [
     "firefox",                                              # browser
     "floorp-bin",                                           # browser
     "kitty",                                                # terminal
-    "dolphin",                                              # file manager
+    "thunar",                                              # file manager
     "ark",                                                  # kde file archiver
     "vim",                                                  # terminal text editor
     "neovim",                                               # terminal text editor

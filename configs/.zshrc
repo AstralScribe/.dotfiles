@@ -181,3 +181,8 @@ USE_POWERLINE="true"
 LS_COLORS+=':ow=01;34'
 
 # <<< Extra Commands <<<
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/mayank/.lmstudio/bin"
+# End of LM Studio CLI section
+

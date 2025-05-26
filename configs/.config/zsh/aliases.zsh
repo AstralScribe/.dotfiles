@@ -5,9 +5,11 @@
 alias ls='ls --color'
 alias vim=nvim
 alias vi=nvim
-alias code="code --ozone-platform=wayland"
-alias code.="$code ."
+# alias code="code =wayland"
+# alias code.="$code ."
+alias code.="code ."
 alias t="todo.sh"
+alias zen="/home/mayank/Applications/zen-x86_64.AppImage %u"
 
 # Remote Connections
 alias s="ssh"
