@@ -33,15 +33,15 @@ def patch_themes():
     ...
 
 
-def configure_display_manager():
-    if not os.path.exists("/etc/sddm.conf.d"):
-        helpers.run(["sudo", "mkdir", "-p", "/etc/sddm.conf.d"])
-        print("\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm...")
-
-    helpers.run("sudo touch /etc/sddm.conf.d/kde_settings.conf", shell=True)
-    helpers.run("sudo cp -r ~/.dotfiles/configs/sddm/Candy /usr/share/sddm/themes/Candy", shell=True)
-    helpers.run("sudo cp /etc/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.t2.bkp", shell=True)
-    helpers.run("sudo cp /usr/share/sddm/themes/Candy/kde_settings.conf /etc/sddm.conf.d/", shell=True)
-
-configure_display_manager()
+# def configure_display_manager():
+#     if not os.path.exists("/etc/sddm.conf.d"):
+#         helpers.run(["sudo", "mkdir", "-p", "/etc/sddm.conf.d"])
+#         print("\033[0;32m[DISPLAYMANAGER]\033[0m configuring sddm...")
+#
+#     helpers.run("sudo touch /etc/sddm.conf.d/kde_settings.conf", shell=True)
+#     helpers.run("sudo cp -r ~/.dotfiles/configs/sddm/Candy /usr/share/sddm/themes/Candy", shell=True)
+#     helpers.run("sudo cp /etc/sddm.conf.d/kde_settings.conf /etc/sddm.conf.d/kde_settings.t2.bkp", shell=True)
+#     helpers.run("sudo cp /usr/share/sddm/themes/Candy/kde_settings.conf /etc/sddm.conf.d/", shell=True)
+#
+# configure_display_manager()
 

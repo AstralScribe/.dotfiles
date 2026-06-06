@@ -1,8 +1,3 @@
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status then
-  return
-end
-
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
   return
@@ -15,6 +10,7 @@ end
 -- end
 
 local keymap = vim.keymap
+local lspconfig = vim.lsp.config
 
 
 local on_attach = function(client, bufnr)
@@ -43,17 +39,17 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 
 --------------------------- Python Development --------------------------------
-lspconfig.ruff.setup {
+lspconfig("ruff", {
   on_attach = on_attach,
   init_options = {
     settings = {
       args = {},
     }
   }
-}
+})
 
 
-lspconfig.pyright.setup({
+lspconfig("pyright", {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -73,126 +69,48 @@ lspconfig.pyright.setup({
 
 
 -------------------------- C/C++ Development -------------------------------
-lspconfig.clangd.setup {
+lspconfig("clangd", {
   capabilities = capabilities,
   on_attach = on_attach,
-}
+})
 
--- local ccls_config = {
---   cmd = { 'ccls' },
---   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
---   root_dir = function(fname)
---     return lspconfig.util.root_pattern('compile_commands.json', '.ccls')(fname) or
---         lspconfig.util.find_git_ancestor(fname)
---   end,
---   offset_encoding = 'utf-32',
---   -- ccls does not support sending a null root directory
---   single_file_support = false,
---   docs = {
---     description = [[
--- https://github.com/MaskRay/ccls/wiki
---
--- ccls relies on a [JSON compilation database](https://clang.llvm.org/docs/JSONCompilationDatabase.html) specified
--- as compile_commands.json or, for simpler projects, a .ccls.
--- For details on how to automatically generate one using CMake look [here](https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html). Alternatively, you can use [Bear](https://github.com/rizsotto/Bear).
---
--- Customization options are passed to ccls at initialization time via init_options, a list of available options can be found [here](https://github.com/MaskRay/ccls/wiki/Customization#initialization-options). For example:
---
--- ```lua
--- local lspconfig = require'lspconfig'
--- lspconfig.ccls.setup {
---   init_options = {
---     compilationDatabaseDirectory = "build";
---     index = {
---       threads = 0;
---     };
---     clang = {
---       excludeArgs = { "-frounding-math"} ;
---     };
---   }
--- }
---
--- ```
---
--- ]],
---   },
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
-
--- lspconfig.ccls.setup { ccls_config }
-
--- local util = lspconfig.util
--- local server_config = {
---   filetypes = { "c", "cpp", "objc", "objcpp", "opencl" },
---   root_dir = function(fname)
---     return util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")(fname)
---         or util.find_git_ancestor(fname)
---   end,
---   init_options = {
---     cache = {
---       directory = vim.fs.normalize "~/.cache/ccls"
---     }
---   },
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
---
--- ccls.setup {
---   lsp = {
---     lspconfig = server_config,
---     disable_capabilities = {
---       completionProvider = true,
---       documentFormattingProvider = true,
---       documentRangeFormattingProvider = true,
---       documentHighlightProvider = true,
---       documentSymbolProvider = true,
---       workspaceSymbolProvider = true,
---       renameProvider = true,
---       hoverProvider = true,
---       codeActionProvider = true,
---     },
---     disable_diagnostics = true,
---     disable_signature = true,
---   }
--- }
 
 --------------------------- Web Development --------------------------------
 -- configure html server
-lspconfig.html.setup({
+lspconfig("html", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
 -- configure css server
-lspconfig.cssls.setup({
+lspconfig("cssls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
 -- configure tailwindcss server
-lspconfig.tailwindcss.setup({
+lspconfig("tailwindcss", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
 
 --------------------------- JS Development --------------------------------
-lspconfig.emmet_ls.setup({
+lspconfig("emmet_ls", {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
 
 --------------------------- Go Development --------------------------------
-lspconfig.gopls.setup({
+lspconfig("gopls", {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "go", "gomod", "gowork", "gotmpl" }
 })
 
 ----------------------------- Lua Development -----------------------------
-lspconfig.lua_ls.setup({
+lspconfig("lua_ls", {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -211,7 +129,7 @@ lspconfig.lua_ls.setup({
 })
 
 ----------------------------- Rust Development -----------------------------
-lspconfig.rust_analyzer.setup {
+lspconfig("rust_analyzer", {
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
@@ -219,7 +137,7 @@ lspconfig.rust_analyzer.setup {
       }
     }
   }
-}
+})
 
 ----------------------------- Bash Development -----------------------------
-lspconfig.bashls.setup {}
+lspconfig("bashls", {})

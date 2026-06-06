@@ -55,9 +55,9 @@ def split_pkg(pkgs: List):
             repo = _extract_repo(pkg)
             print(f"\033[0;32m[{repo}]\033[0m queueing {pkg} from official arch repo...")
             pacman_pkgs.append(pkg)
-        elif helpers.aur_available(pkg):
-            print(f"\033[0;34m[aur]\033[0m queueing {pkg} from arch user repo...")
-            aur_pkgs.append(pkg)
+        # elif helpers.aur_available(pkg):
+        #     print(f"\033[0;34m[aur]\033[0m queueing {pkg} from arch user repo...")
+        #     aur_pkgs.append(pkg)
         else:
             print(f"Error: unknown package {pkg}...")
 

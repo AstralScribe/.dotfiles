@@ -101,21 +101,21 @@ if flg_Install:
     #--------------------------------#
     # install packages from the list #
     #--------------------------------#
-    if not helpers.pkg_status("rustup"):
-        install_pkg.install_rust()
-    install_pkg.install_aur_helper()
-    pacman_pkgs, aur_pkgs = install_pkg.split_pkg(pkgs)
+    # if not helpers.pkg_status("rustup"):
+    #     install_pkg.install_rust()
+    # install_pkg.install_aur_helper()
+    pacman_pkgs, _ = install_pkg.split_pkg(pkgs)
 
     print("Pacman Packages: ", pacman_pkgs)
-    print("AUR Packages: ", aur_pkgs)
+    # print("AUR Packages: ", aur_pkgs)
 
     continue_setup = input("Do you wish to continue? [Y/n]")
     
     if continue_setup.lower() == "y":
         install_pkg.install_pacman(pacman_pkgs)
-        install_pkg.install_aur(aur_pkgs)
+        # install_pkg.install_aur(aur_pkgs)
         # install_pkg.install_eww()
-        del pkgs, pacman_pkgs, aur_pkgs
+        # del pkgs, pacman_pkgs, aur_pkgs
     else:
         sys.exit()
         

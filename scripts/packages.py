@@ -13,13 +13,12 @@ packages = [
     "network-manager-applet",                               # network manager system tray utility
     "bluez",                                                # bluetooth protocol stack
     "bluez-utils",                                          # bluetooth utility cli
-    "blueberry",                                            # bluetooth manager gui
+    "blueman",                                              # bluetooth manager gui
     "brightnessctl",                                        # screen brightness control
     "udiskie",                                              # manage removable media
     "wlr-randr",                                            # xrandr for wayland
-    "sof-firmware",
-    "ffmpeg",
-    "docker",
+    "ffmpeg",                                               # audio/video utility
+    "docker",                                               # containerization
 
 # --------------------------------------------------------- // Display Manager
     "sddm",                                                 # display manager for KDE plasma
@@ -30,27 +29,21 @@ packages = [
 # --------------------------------------------------------- // Window Manager
     "hyprland",                                             # wlroots-based wayland compositor
     "dunst",                                                # notification daemon
-    "rofi-wayland",                                         # application launcher
+    "rofi",                                                 # application launcher
     "waybar",                                               # system bar
-    "swww",                                                 # wallpaper
-    "swaylock-effects-git",                                 # lock screen
-    "wlogout",                                              # logout menu
+    "hyprpaper",                                            # wallpaper
+    "hyprlock",                                             # lock screen
     "hyprpicker",                                           # color picker
-    "slurp",                                                # region select for screenshot/screenshare
-    "swappy",                                               # screenshot editor
+    "hyprshot",                                             # screenshot
     "cliphist",                                             # clipboard manager
-    "grim",                                                 # screenshot app
 
 # --------------------------------------------------------- // Dependencies
-    "polkit-kde-agent",                                     # authentication agent
+    "polkit-gnome",                                         # authentication agent
     "xdg-desktop-portal-hyprland",                          # xdg desktop portal for hyprland
     "pacman-contrib",                                       # for system update check
     "parallel",                                             # for parallel processing
     "jq",                                                   # for json processing
     "imagemagick",                                          # for image processing
-    # "qt5-imageformats",                                   # for dolphin image thumbnails
-    # "ffmpegthumbs",                                       # for dolphin video thumbnails
-    # "kde-cli-tools",                                      # for dolphin file type defaults
     "libnotify",                                            # for notifications
 
 # --------------------------------------------------------- // Theming
@@ -61,58 +54,66 @@ packages = [
     "kvantum-qt5",                                          # svg based qt5 theme engine
     "qt5-wayland",                                          # wayland support in qt5
     "qt6-wayland",                                          # wayland support in qt6
-    # "bibata-cursor-theme",                                  # cursors list
 
 # --------------------------------------------------------- // Applications
     "firefox",                                              # browser
-    "floorp-bin",                                           # browser
-    "kitty",                                                # terminal
-    "thunar",                                              # file manager
+    "ghostty",                                              # terminal
+    "thunar",                                               # file manager
     "ark",                                                  # kde file archiver
-    "vim",                                                  # terminal text editor
     "neovim",                                               # terminal text editor
     "mpv",                                                  # video player
     "openssh",                                              # ssh
-    "p7zip",                                                # zip
-    "redis",                                                # in-memory database
+    "valkey",                                               # in-memory database
 
 # --------------------------------------------------------- // Shell
     "zsh",                                                  # shell
     "fastfetch",                                            # system information fetch tool
-    "tmux",                                                 # terminal multiplexer
+    # "tmux",                                               # terminal multiplexer
     "zoxide",                                               # faster cd
     "tldr",                                                 # man with examples
+    "rsync",                                                # better cp and scp
+    "meson",                                                # python based build system
+    "fzf",                                                  # fuzzy search
+    "btop",                                                 # system monitor
+    "figlet",                                               # ascii based art
+    "ripgrep",                                              # better grep
+
+
+# --------------------------------------------------------- // Programming Language
     "uv",                                                   # python-package manager
     "rye",                                                  # python-project manager
     "rustup",                                               # rust package manager
-    "rsync",
-    "ranger",
-    "meson",
-    "htop",
-    "btop",
-    "elixir",
-    "figlet",
-    "ripgrep",
+    "clang",                                                # C/C++ compiler
+    "lld",                                                  # LLVM dynamic linker
+    "lldb",                                                 # LLVM debugger
+    "cuda",                                                 # Nvidia Cuda Language
+    "cudnn",                                                # Nvidia Cuda Deep Neutral Network
+    "go",                                                   # Go Programming Language
+    "gopls",                                                # Go Language Server
+    "ninja",                                                # C/C++ build system
+    "cmake",                                                # C/C++ build system creator
+    "llvm",                                     
+    "ccache",                                               # Cache creator for faster builds
+    "godot",                                                # Game engine
+    "scons",                                                # Build script for godot
 
-    
 
 # --------------------------------------------------------- // Fonts
-    "gnu-free-fonts",
-    "otf-firamono-nerd",
-    "noto-fonts",
-    "noto-fonts-extra",
-    "ttf-cascadia-code",
-    "ttf-cascadia-code-nerd",
-    "ttf-cascadia-mono-nerd",
-    "ttf-firacode-nerd",
-    "ttf-font-awesome",
-    "ttf-hanazone",
-    "ttf-jetbrains-mono",
-    "ttf-jetbrains-mono-nerd",
+    "unicode-emoji",                                        # Emojis
+    "gnu-free-fonts",                                       # GNU Fonts
+    "noto-fonts",                                           # Google Noto Fonts
+    "noto-fonts-cjk",                                       # Google Noto Fonts
+    "noto-fonts-emoji",                                     # Google Noto Fonts
+    "noto-fonts-extra",                                     # Google Noto Fonts
+    "ttf-cascadia-code",                                    # Cascadia Fonts
+    "ttf-cascadia-code-nerd",                               # Cascadia Fonts
+    "ttf-cascadia-mono-nerd",                               # Cascadia Fonts
+    "otf-firamono-nerd",                                    # FiraCode Fonts
+    "ttf-firacode-nerd",                                    # FiraCode Fonts
+    "ttf-jetbrains-mono",                                   # JetBrains Fonts
+    "ttf-jetbrains-mono-nerd",                              # JetBrains Fonts
+    "ttf-victor-mono-nerd",                                 # VictorMono Fonts
     "ttf-mononoki-nerd",
-    "ttf-victor-mono-nerd",
-    "unicode-emoji",
-    "noto-fonts-cjk",
-    "noto-fonts-emoji",
-    "noto-fonts-extra",
+    "ttf-jigmo",                                            # Japanese Fonts
+    "ttf-baekmuk",                                          # Korean Fonts
 ]
