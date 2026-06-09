@@ -141,7 +141,6 @@ export TERM="xterm-256color"
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-
 source "$XDG_CONFIG_HOME/zsh/aliases.zsh"
 
 # <<< Source <<<
@@ -149,17 +148,17 @@ source "$XDG_CONFIG_HOME/zsh/aliases.zsh"
 
 # >>> conda initialize >>>
 
-__conda_setup="$('/home/mayank/Miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/mayank/Miniconda/etc/profile.d/conda.sh" ]; then
-        . "/home/mayank/Miniconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/mayank/Miniconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/mayank/Miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/mayank/Miniconda/etc/profile.d/conda.sh" ]; then
+#         . "/home/mayank/Miniconda/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/mayank/Miniconda/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 
 # <<< conda initialize <<<
 
@@ -181,8 +180,3 @@ USE_POWERLINE="true"
 LS_COLORS+=':ow=01;34'
 
 # <<< Extra Commands <<<
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/mayank/.lmstudio/bin"
-# End of LM Studio CLI section
-

@@ -89,4 +89,5 @@ awww img $cache_file \
     --transition-bezier .43,1.19,1,.4 \
     --transition-fps=60 \
     --transition-type=$transition_type \
-    --transition-duration=0.7
+    --transition-duration=0.7 \
+    --transition-pos "$(hyprctl cursorpos | grep -E '^[0-9]' || echo "0,0")"
