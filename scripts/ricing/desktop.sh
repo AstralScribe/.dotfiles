@@ -4,7 +4,6 @@ set -euo pipefail
 
 SCRIPT_PATH="$(pwd)/scripts"
 DRY_RUN=false
-
 source "$SCRIPT_PATH/helpers.sh"
 
 while (( $# > 0 )); do

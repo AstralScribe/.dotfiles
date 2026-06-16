@@ -14,6 +14,7 @@ END="\e[0m"
 
 
 TEMP_PATH="$HOME/.cache/myde/temp"
+CONFIG_PATH="$(pwd)/configs"
 
 log() {
   local log_name="$1"

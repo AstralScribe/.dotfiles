@@ -11,10 +11,6 @@ while (( $# > 0 )); do
     -n|--dry-run)
       DRY_RUN=true
       ;;
-    -h|--help)
-      printf 'Usage: %s [--dry-run]\n' "$0"
-      exit 0
-      ;;
     *)
       printf 'Unknown option: %s\n' "$1" >&2
       printf 'Usage: %s [--dry-run]\n' "$0" >&2
@@ -37,7 +33,6 @@ run "tmux" "$BLUE" "$DRY_RUN" git clone https://github.com/catppuccin/tmux "$TEM
 
 run "tmux" "$BLUE" "$DRY_RUN" mkdir -p "$HOME/.tmux/plugins"
 run "tmux" "$BLUE" "$DRY_RUN" cp -r "$TEMP_PATH/tmux" "$HOME/.tmux/plugins"
-
-run "tmux" "$BLUE" "$DRY_RUN" cp "$SCRIPT_PATH/../configs/tmux.conf" "$HOME/.tmux.conf"
+run "tmux" "$BLUE" "$DRY_RUN" cp "$CONFIG_PATH/tmux.conf" "$HOME/.tmux.conf"
 
 log "tmux" "$GREEN" "tmux setup completed"

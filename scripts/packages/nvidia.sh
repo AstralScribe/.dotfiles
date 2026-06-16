@@ -3,7 +3,7 @@
 set -eou pipefail
 
 SCRIPT_PATH="$(pwd)/scripts"
-source "${SCRIPT_PATH}/helpers.sh"
+source "$SCRIPT_PATH/helpers.sh"
 
 
 nvidia_detect() {
@@ -20,7 +20,7 @@ nvidia_detect() {
         local index=0
 
         for gpu in "${gpus[@]}"; do
-            printf "${BLUE}[gpu%s]${END} detected // %s\n" "$index" "$gpu"
+            printf "$BLUE[gpu%s]$END detected // %s\n" "$index" "$gpu"
             index=$((index + 1))
         done
 

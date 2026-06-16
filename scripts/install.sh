@@ -57,13 +57,18 @@ fi
 
 printf "%s\n\n" "$(log "pre-setup" "$BLUE" "Doing Pre-Install setup")"
 mkdir -p "$TEMP_PATH"
-show_progress 1 4 "Created cache directory"
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.local/bin"
+
+show_progress 1 5 "Created required directory"
 git clone -q --depth=1 https://github.com/xero/figlet-fonts.git "$TEMP_PATH/figlet-fonts"
-show_progress 2 4 "Downloaded figlet fonts"
+show_progress 2 5 "Downloaded figlet fonts"
 sudo mkdir -p /usr/share/toilet/fonts
-show_progress 3 4 "Prepared toilet fonts directory"
+show_progress 3 5 "Prepared toilet fonts directory"
 sudo cp -r "$TEMP_PATH/figlet-fonts" /usr/share/toilet/fonts
-show_progress 4 4 "Installed figlet fonts"
+show_progress 4 5 "Installed figlet fonts"
+sudo cp "$SCRIPT_PATH/profile.d/user_vars.sh" "/etc/profile.d/user_vars.sh"
+show_progress 5 5 "Copied profile.d user variables."
 
 printf "\n%s\n\n\n" "$(log "pre-setup" "$BLUE" "Pre-Setup completed.")"
 toilet "Arch Setup" --font "ANSI Regular" -d /usr/share/toilet/fonts
