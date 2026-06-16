@@ -17,7 +17,6 @@ local plugins = {
 
   --themes
   "rebelot/kanagawa.nvim",
-  { "rose-pine/neovim",                name = "rose-pine" },
   "Rigellute/shades-of-purple.vim",
 
   -- essential plugins

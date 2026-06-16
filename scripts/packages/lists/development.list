@@ -5,7 +5,7 @@ cmake
 cuda
 cudnn
 docker
-eigen3
+eigen
 git
 go
 godot

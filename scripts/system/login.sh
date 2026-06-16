@@ -6,20 +6,16 @@ SCRIPT_PATH="$(pwd)/scripts"
 DRY_RUN=false
 
 SILENT_SDDM_REPO_URL="https://github.com/uiriansan/SilentSDDM"
-SILENT_SDDM_CLONE_PATH="${HOME}/.cache/myde/temp/SilentSDDM"
+SILENT_SDDM_CLONE_PATH="$HOME/.cache/myde/temp/SilentSDDM"
 SILENT_SDDM_THEME_PATH="/usr/share/sddm/themes/silent"
 SILENT_SDDM_CONFIG_PATH="/etc/sddm.conf.d/10-silent.conf"
 
-source "${SCRIPT_PATH}/helpers.sh"
+source "$SCRIPT_PATH/helpers.sh"
 
 while (( $# > 0 )); do
   case "$1" in
     -n|--dry-run)
       DRY_RUN=true
-      ;;
-    -h|--help)
-      printf 'Usage: %s [--dry-run]\n' "$0"
-      exit 0
       ;;
     *)
       printf 'Unknown option: %s\n' "$1" >&2
@@ -30,34 +26,34 @@ while (( $# > 0 )); do
   shift
 done
 
-log "login" "${CYAN}" "Setting up SilentSDDM"
-log "login" "${YELLOW}" "SilentSDDM requires SDDM v0.21.0 or newer"
+log "login" "$CYAN" "Setting up SilentSDDM"
+log "login" "$YELLOW" "SilentSDDM requires SDDM v0.21.0 or newer"
 
-if [[ -d "${SILENT_SDDM_CLONE_PATH}/.git" ]]; then
-  log "login" "${CYAN}" "Refreshing existing SilentSDDM clone"
-  run "login" "${CYAN}" "${DRY_RUN}" git -C "${SILENT_SDDM_CLONE_PATH}" pull --ff-only
+if [[ -d "$SILENT_SDDM_CLONE_PATH/.git" ]]; then
+  log "login" "$CYAN" "Refreshing existing SilentSDDM clone"
+  run "login" "$CYAN" "$DRY_RUN" git -C "$SILENT_SDDM_CLONE_PATH" pull --ff-only
 else
-  log "login" "${CYAN}" "Cloning SilentSDDM repository"
-  run "login" "${CYAN}" "${DRY_RUN}" mkdir -p "${HOME}/.cache/myde/temp"
-  run "login" "${CYAN}" "${DRY_RUN}" git clone -b main --depth=1 "${SILENT_SDDM_REPO_URL}" "${SILENT_SDDM_CLONE_PATH}"
+  log "login" "$CYAN" "Cloning SilentSDDM repository"
+  run "login" "$CYAN" "$DRY_RUN" mkdir -p "$HOME/.cache/myde/temp"
+  run "login" "$CYAN" "$DRY_RUN" git clone -b main --depth=1 "$SILENT_SDDM_REPO_URL" "$SILENT_SDDM_CLONE_PATH"
 fi
 
-log "login" "${CYAN}" "Installing SilentSDDM theme files"
-run "login" "${CYAN}" "${DRY_RUN}" sudo mkdir -p "${SILENT_SDDM_THEME_PATH}"
-run "login" "${CYAN}" "${DRY_RUN}" sudo cp -rf "${SILENT_SDDM_CLONE_PATH}/." "${SILENT_SDDM_THEME_PATH}/"
+log "login" "$CYAN" "Installing SilentSDDM theme files"
+run "login" "$CYAN" "$DRY_RUN" sudo mkdir -p "$SILENT_SDDM_THEME_PATH"
+run "login" "$CYAN" "$DRY_RUN" sudo cp -rf "$SILENT_SDDM_CLONE_PATH/." "$SILENT_SDDM_THEME_PATH/"
 
-if [[ -d "${SILENT_SDDM_THEME_PATH}/fonts" ]]; then
-  log "login" "${CYAN}" "Installing SilentSDDM fonts"
-  run "login" "${CYAN}" "${DRY_RUN}" sudo mkdir -p /usr/share/fonts
-  run "login" "${CYAN}" "${DRY_RUN}" sudo cp -rf "${SILENT_SDDM_THEME_PATH}/fonts/." /usr/share/fonts/
+if [[ -d "$SILENT_SDDM_THEME_PATH/fonts" ]]; then
+  log "login" "$CYAN" "Installing SilentSDDM fonts"
+  run "login" "$CYAN" "$DRY_RUN" sudo mkdir -p /usr/share/fonts
+  run "login" "$CYAN" "$DRY_RUN" sudo cp -rf "$SILENT_SDDM_THEME_PATH/fonts/." /usr/share/fonts/
 else
-  log "login" "${YELLOW}" "No fonts directory found in SilentSDDM theme; skipping font install"
+  log "login" "$YELLOW" "No fonts directory found in SilentSDDM theme; skipping font install"
 fi
 
-log "login" "${CYAN}" "Writing SDDM Silent theme config to ${SILENT_SDDM_CONFIG_PATH}"
-if [[ "${DRY_RUN}" == true ]]; then
-  log "login" "${CYAN}" "DRY RUN: sudo mkdir -p /etc/sddm.conf.d"
-  log "login" "${CYAN}" "DRY RUN: write [General]/[Theme] settings for SilentSDDM to ${SILENT_SDDM_CONFIG_PATH}"
+log "login" "$CYAN" "Writing SDDM Silent theme config to $SILENT_SDDM_CONFIG_PATH"
+if [[ "$DRY_RUN" == true ]]; then
+  log "login" "$CYAN" "DRY RUN: sudo mkdir -p /etc/sddm.conf.d"
+  log "login" "$CYAN" "DRY RUN: write [General]/[Theme] settings for SilentSDDM to $SILENT_SDDM_CONFIG_PATH"
 else
   tmp_config="$(mktemp)"
   cat > "${tmp_config}" <<'EOF'
@@ -68,10 +64,21 @@ GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT
 [Theme]
 Current=silent
 EOF
-  run "login" "${CYAN}" "${DRY_RUN}" sudo mkdir -p /etc/sddm.conf.d
-  run "login" "${CYAN}" "${DRY_RUN}" sudo cp "${tmp_config}" "${SILENT_SDDM_CONFIG_PATH}"
-  rm -f "${tmp_config}"
+  run "login" "$CYAN" "$DRY_RUN" sudo mkdir -p /etc/sddm.conf.d
+  run "login" "$CYAN" "$DRY_RUN" sudo cp "$tmp_config" "$SILENT_SDDM_CONFIG_PATH"
+  rm -f "$tmp_config"
+  log "login" "$GREEN" "Removing unnecessary files"
+  sudo rm -rf /usr/share/sddm/themes/silent/default.nix
+  sudo rm -rf /usr/share/sddm/themes/silent/flake.*
+  sudo rm -rf /usr/share/sddm/themes/silent/LICENSE
+  sudo rm -rf /usr/share/sddm/themes/silent/LICENSE-TIFF
+  sudo rm -rf /usr/share/sddm/themes/silent/LICENSE-WEBP
+  sudo rm -rf /usr/share/sddm/themes/silent/nix
+  sudo rm -rf /usr/share/sddm/themes/silent/README.md
+  sudo rm -rf /usr/share/sddm/themes/silent/.git
+  sudo rm -rf /usr/share/sddm/themes/silent/.gitignore
+  log "login" "$GREEN" "Unnecessary files removed"
 fi
 
-log "login" "${GREEN}" "SilentSDDM setup complete"
-log "login" "${YELLOW}" "Recommended: test with /usr/share/sddm/themes/silent/test.sh before reboot"
+log "login" "$GREEN" "SilentSDDM setup complete"
+log "login" "$YELLOW" "Recommended: test with /usr/share/sddm/themes/silent/test.sh before reboot"

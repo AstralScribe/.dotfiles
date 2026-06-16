@@ -67,7 +67,7 @@ sudo mkdir -p /usr/share/toilet/fonts
 show_progress 3 5 "Prepared toilet fonts directory"
 sudo cp -r "$TEMP_PATH/figlet-fonts" /usr/share/toilet/fonts
 show_progress 4 5 "Installed figlet fonts"
-sudo cp "$SCRIPT_PATH/profile.d/user_vars.sh" "/etc/profile.d/user_vars.sh"
+sudo cp -r "$SCRIPT_PATH/profile.d" "/etc/profile.d"
 show_progress 5 5 "Copied profile.d user variables."
 
 printf "\n%s\n\n\n" "$(log "pre-setup" "$BLUE" "Pre-Setup completed.")"

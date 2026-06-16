@@ -106,7 +106,6 @@
     lf                      # lf shell (https://github.com/gokcehan/lf)
     xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
     midnight_commander      # midnight commander shell (https://midnight-commander.org/)
-    todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     # =========================[ Line #2 ]=========================
     newline                   # \n
   )
